@@ -18,15 +18,18 @@ public class LookInteract : MonoBehaviour
     {
         GrabbableObject newObj = AttemptSelect();
 
-        if(!newObj && selectedObject)
+        if (!heldObject)
         {
-            selectedObject.UnHighlight();
-            selectedObject = null;
-        }
-        else if (newObj)
-        {
-            selectedObject = newObj;
-            selectedObject.Highlight();
+            if (!newObj && selectedObject)
+            {
+                selectedObject.UnHighlight();
+                selectedObject = null;
+            }
+            else if (newObj)
+            {
+                selectedObject = newObj;
+                selectedObject.Highlight();
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -44,11 +47,9 @@ public class LookInteract : MonoBehaviour
 
         if(heldRb)
         {
-            heldRb.AddForce((grabPosition.position - heldObject.transform.position) * 10f);
+            heldRb.AddForce((grabPosition.position - heldObject.transform.position) * 25f);
 
             Vector3 newDirection = Vector3.RotateTowards(heldObject.transform.forward, grabPosition.transform.forward, 10f * Time.deltaTime, 0f);
-
-            // Calculate a rotation a step closer to the target and applies rotation to this object
             heldObject.transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
