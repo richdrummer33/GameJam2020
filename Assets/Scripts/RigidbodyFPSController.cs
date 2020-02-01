@@ -13,13 +13,13 @@ public class RigidbodyFPSController : MonoBehaviour
     public float jumpHeight = 2.0f;
     private bool grounded = false;
 
-    Rigidbody rigidbody;
+    Rigidbody myRigidbody;
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.freezeRotation = true;
-        rigidbody.useGravity = false;
+        myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody.freezeRotation = true;
+        myRigidbody.useGravity = false;
     }
 
     void FixedUpdate()
@@ -63,22 +63,22 @@ public class RigidbodyFPSController : MonoBehaviour
             targetVelocity *= speed;
 
             // Apply a force that attempts to reach our target velocity
-            Vector3 velocity = rigidbody.velocity;
+            Vector3 velocity = myRigidbody.velocity;
             Vector3 velocityChange = (targetVelocity - velocity);
             velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
-            rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+            myRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
             // Jump
             if (canJump && Input.GetButton("Jump"))
             {
-                rigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+                myRigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
             }
         }
 
         // We apply gravity manually for more tuning control
-        rigidbody.AddForce(new Vector3(0, -gravity * rigidbody.mass, 0));
+        myRigidbody.AddForce(new Vector3(0, -gravity * myRigidbody.mass, 0));
 
         grounded = false;
     }
