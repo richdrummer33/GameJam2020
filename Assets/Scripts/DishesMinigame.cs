@@ -11,6 +11,23 @@ public class DishesMinigame : TaskMinigame
     int currentSlot;
 
     float dishSpawnInterval; // At min click rate
+    List<GameObject> spawnedDishes = new List<GameObject>();
+
+    public override void Activate()
+    {
+        base.Activate();
+        ResetGame();
+    }
+
+    private void ResetGame()
+    {
+        foreach (var dish in spawnedDishes)
+        {
+            Destroy(dish);
+        }
+        spawnedDishes = new List<GameObject>();
+        currentSlot = 0;
+    }
 
     public override void Interact()
     {
@@ -27,7 +44,8 @@ public class DishesMinigame : TaskMinigame
 
                 if (currentTaskCompletion / dishSpawnInterval > currentSlot && currentSlot < dishRackslots.Count)
                 {
-                    GameObject dish = Instantiate(dishPrefab, dishSpawnPosition.position, dishSpawnPosition.rotation);
+                    GameObject dish = Instantiate(dishPrefab, dishSpawnPosition.position, dishSpawnPosition.rotation, dishSpawnPosition.transform);
+                    spawnedDishes.Add(dish);
                     TweenAnimatePosition animator = dish.GetComponent<TweenAnimatePosition>();
                     animator.duration = 2f;
                     Debug.Log("asd " + (dishRackslots.Count - currentSlot - 1));
@@ -35,10 +53,9 @@ public class DishesMinigame : TaskMinigame
                     animator.Animate();
                     currentSlot++;
 
-                    if(currentTaskCompletion > taskDuration)
+                    if (spawnedDishes.Count >= dishRackslots.Count)
                     {
                         Finish(); // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
-                        isActive = false;
                     }
                 }
             }
@@ -61,6 +78,6 @@ public class DishesMinigame : TaskMinigame
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

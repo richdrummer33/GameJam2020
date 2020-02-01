@@ -14,7 +14,7 @@ public class BaseTask : MonoBehaviour
     {
         possiblMiniGames = FindObjectsOfType<Minigame>().ToList();
         assignedMinigame = possiblMiniGames[Random.Range(0, possiblMiniGames.Count)];
-        assignedMinigame.isActive = true;
+        assignedMinigame.Activate();
         assignedMinigame.associatedTask = this;
     }
 

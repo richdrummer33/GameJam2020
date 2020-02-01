@@ -9,7 +9,7 @@ public abstract class Minigame : MonoBehaviour
 {
     public float taskDuration;
 
-    public bool isActive;
+    protected bool isActive;
 
     public BaseTask associatedTask;
 
@@ -24,9 +24,15 @@ public abstract class Minigame : MonoBehaviour
 
     }
 
-    public void Finish()
+    public virtual void Activate()
+    {
+        isActive = true;
+    }
+
+    public virtual void Finish()
     {
         associatedTask.Complete();
+        isActive = false;
     }
 
 }

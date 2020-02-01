@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public float targetTime = 60.0f;
     bool swamped = false;
 
-    public List<BaseTask> taskList;
+    public List<BaseTask> taskList = new List<BaseTask>();
     public int maximumTasksBeforeSwamped = 5;
     public BaseTask taskPrefab;
 
