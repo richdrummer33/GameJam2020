@@ -2,22 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  For the bigass garbage bin outside
+/// </summary>
 public class GarbageMinigame : Minigame
 {
-    public List<GameObject> garbageToDump;
+    public List<GarbageBinController> binsToEmpty;
     int numtoDump;
+    int numDumped;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(garbageToDump.Contains(other.gameObject))
-        {
-            garbageToDump.Remove(other.gameObject);
-            Destroy(other.gameObject, 5f);
-            currentTaskCompletion = 1f - garbageToDump.Count / numtoDump;
+        GrabbableGarbage garbageBag = other.GetComponent<GrabbableGarbage>();
 
-            if(garbageToDump.Count == 0)
+        if (garbageBag)
+        {
+            if (binsToEmpty.Contains(garbageBag.binOfOrigin))
             {
-                Finish();
+                numDumped++;
+                Destroy(other.gameObject, 5f);
+                currentTaskCompletion = 1f - numDumped / numtoDump;
+
+                if (numDumped == numtoDump)
+                {
+                    Finish();
+                }
             }
         }
     }
@@ -25,12 +34,7 @@ public class GarbageMinigame : Minigame
     // Start is called before the first frame update
     void Start()
     {
-        numtoDump = garbageToDump.Count;
+        numtoDump = binsToEmpty.Count;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
