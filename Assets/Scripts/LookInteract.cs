@@ -47,12 +47,7 @@ public class LookInteract : MonoBehaviour
         {
             GrabbableObject grabbableObj = obj.GetComponent<GrabbableObject>();
 
-            if (!grabbableObj && selectedObject)
-            {
-                selectedObject.UnHighlight();
-                selectedObject = null;
-            }
-            else if (grabbableObj)
+             if (grabbableObj)
             {
                 selectedObject = grabbableObj;
                 selectedObject.Highlight();
@@ -64,6 +59,7 @@ public class LookInteract : MonoBehaviour
             }
             else if (obj.GetComponent<Minigame>())
             {
+                Debug.Log("ASDSAD");
                 selectedGame = obj.GetComponent<Minigame>();
                 selectedGame.Highlight();
                 
@@ -77,6 +73,16 @@ public class LookInteract : MonoBehaviour
                 selectedGame.UnHighlight();
                 selectedGame = null;
             }
+        }
+        else if (selectedObject)
+        {
+            selectedObject.UnHighlight();
+            selectedObject = null;
+        }
+        else if (selectedGame)
+        {
+            selectedGame.UnHighlight();
+            selectedGame = null;
         }
     }
 

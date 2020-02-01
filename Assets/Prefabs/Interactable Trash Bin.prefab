@@ -110,8 +110,12 @@ MonoBehaviour:
   associatedTask: {fileID: 0}
   taskName: 
   highlighter: {fileID: 7185965584731168391}
+  minigameType: 1
   currentTaskCompletion: 0
-  garbageBagPrefab: {fileID: 0}
+  garbageBagPrefab: {fileID: 2579931798222697405, guid: 1f26218e56af6a949af7dc8f68a226f0,
+    type: 3}
+  numPiecesGarbage: 5
+  maxPiecesGarbage: 5
 --- !u!1 &4855738405372597789
 GameObject:
   m_ObjectHideFlags: 0

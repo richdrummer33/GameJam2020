@@ -9,13 +9,16 @@ public abstract class Minigame : MonoBehaviour
 {
     public float taskDuration;
 
-    protected bool isActive;
+    public bool isActive;
 
     public BaseTask associatedTask;
 
     public string taskName;
 
     public GameObject highlighter;
+
+    public enum MinigameType { Task, Fun }
+    public MinigameType minigameType;
 
     [SerializeField]
     protected float currentTaskCompletion; // Number of seconds contributed to task
@@ -54,4 +57,8 @@ public abstract class Minigame : MonoBehaviour
             highlighter.SetActive(false);
     }
 
+    public virtual float FunFactor(float fun)
+    {
+        return 0;
+    }
 }

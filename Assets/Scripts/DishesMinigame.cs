@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DishesMinigame : TaskMinigame
+public class DishesMinigame : Minigame
 {
     public Transform dishSpawnPosition;
     public GameObject dishPrefab;
@@ -12,6 +12,10 @@ public class DishesMinigame : TaskMinigame
 
     float dishSpawnInterval; // At min click rate
     List<GameObject> spawnedDishes = new List<GameObject>();
+
+    protected float currentClickRate;
+    protected float lastClickTime; // use Time.time to get delta from this current click
+    public float minClickRate = 1f; // Clicks per second to start progress
 
     public override void Activate()
     {
