@@ -5,9 +5,14 @@ using UnityEngine;
 /// <summary>
 /// Base class for all minigames
 /// </summary>
-public class Minigame : MonoBehaviour
+public abstract class Minigame : MonoBehaviour
+
 {
     public float taskDuration;
+
+    public bool isActive;
+
+    public BaseTask associatedTask;
 
     [SerializeField]
     protected float currentTaskCompletion; // Number of seconds contributed to task
@@ -21,6 +26,11 @@ public class Minigame : MonoBehaviour
     public virtual void Interact()
     {
 
+    }
+
+    public void Finish()
+    {
+        associatedTask.Complete();
     }
 
 }

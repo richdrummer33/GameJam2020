@@ -12,8 +12,6 @@ public class DishesMinigame : Minigame
 
     float dishSpawnInterval; // At min click rate
 
-    public bool isActive;
-
     public override void Interact()
     {
         if (isActive)
