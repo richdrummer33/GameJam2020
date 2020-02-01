@@ -22991,6 +22991,7 @@ MonoBehaviour:
   - {fileID: 417240900}
   - {fileID: 414762149}
   - {fileID: 1315426567}
+  isActive: 1
 --- !u!33 &2206781687217303301
 MeshFilter:
   m_ObjectHideFlags: 0

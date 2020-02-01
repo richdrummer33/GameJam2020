@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LookInteract : MonoBehaviour
 {
@@ -36,34 +34,46 @@ public class LookInteract : MonoBehaviour
             return;
         }
 
-        GrabbableObject newObj = AttemptSelect();
-
-        if(!newObj && selectedObject)
+        GameObject obj = AttemptSelect();
+        if (obj)
         {
-            selectedObject.UnHighlight();
-            selectedObject = null;
-        }
-        else if (newObj)
-        {
-            selectedObject = newObj;
-            selectedObject.Highlight();
+            GrabbableObject grabbableObj = obj.GetComponent<GrabbableObject>();
 
-            if ( Input.GetKeyDown(KeyCode.Mouse0) )
+            if (!grabbableObj && selectedObject)
             {
-                AttemptGrab();
+                selectedObject.UnHighlight();
+                selectedObject = null;
+            }
+            else if (grabbableObj)
+            {
+                selectedObject = grabbableObj;
+                selectedObject.Highlight();
+
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    AttemptGrab();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Minigame game = obj.GetComponent<Minigame>();
+                if (game)
+                {
+                    game.Interact();
+                }
             }
         }
     }
 
-    GrabbableObject AttemptSelect()
+    GameObject AttemptSelect()
     {
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f))
         {
-            if ( hit.transform.CompareTag( "Grabbable" ) )
+            if ( hit.transform.CompareTag( "Grabbable" ) || hit.transform.CompareTag("Minigame"))
             {
-                return hit.transform.GetComponent<GrabbableObject>();
+                return hit.transform.gameObject;
             }
         }
 
