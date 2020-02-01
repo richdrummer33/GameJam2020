@@ -12,30 +12,39 @@ public class DishesMinigame : Minigame
 
     float dishSpawnInterval; // At min click rate
 
+    public bool isActive;
+
     public override void Interact()
     {
-        base.Interact();
-
-        currentClickRate = 1f / (Time.time - lastClickTime);
-        Debug.Log("Current click rate " + currentClickRate);
-
-        if(currentClickRate > minClickRate)
+        if (isActive)
         {
-            currentTaskCompletion += (Time.time - lastClickTime); // * currentClickRate / minClickRate;
+            base.Interact();
 
-            if(currentTaskCompletion / dishSpawnInterval > currentSlot && currentSlot < dishRackslots.Count)
+            currentClickRate = 1f / (Time.time - lastClickTime);
+            Debug.Log("Current click rate " + currentClickRate);
+
+            if (currentClickRate > minClickRate)
             {
-                GameObject dish = Instantiate(dishPrefab, dishSpawnPosition.position, dishSpawnPosition.rotation);
-                TweenAnimatePosition animator = dish.GetComponent<TweenAnimatePosition>();
-                animator.duration = 2f;
-                Debug.Log("asd " + (dishRackslots.Count - currentSlot - 1));
-                animator.destination = dishRackslots[dishRackslots.Count - currentSlot - 1];
-                animator.Animate();
-                currentSlot++;
-            }
-        }
+                currentTaskCompletion += (Time.time - lastClickTime); // * currentClickRate / minClickRate;
 
-        lastClickTime = Time.time;
+                if (currentTaskCompletion / dishSpawnInterval > currentSlot && currentSlot < dishRackslots.Count)
+                {
+                    GameObject dish = Instantiate(dishPrefab, dishSpawnPosition.position, dishSpawnPosition.rotation);
+                    TweenAnimatePosition animator = dish.GetComponent<TweenAnimatePosition>();
+                    animator.duration = 2f;
+                    Debug.Log("asd " + (dishRackslots.Count - currentSlot - 1));
+                    animator.destination = dishRackslots[dishRackslots.Count - currentSlot - 1];
+                    animator.Animate();
+                    currentSlot++;
+                }
+            }
+
+            lastClickTime = Time.time;
+        }
+        else
+        {
+            Debug.Log("Minigame " + name + " is inactive");
+        }
     }
 
 
