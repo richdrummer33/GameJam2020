@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
     public float targetTime = 60.0f;
     bool swamped = false;
 
-    public List<GameObject> taskList;
+    public List<BaseTask> taskList = new List<BaseTask>();
     public int maximumTasksBeforeSwamped = 5;
-    public GameObject taskPrefab;
+    public BaseTask taskPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
 
     void CreateTask()
     {
-        var newTask = Instantiate(taskPrefab);
+        var newTask = Instantiate(taskPrefab, gameObject.transform);
+        newTask.taskList = taskList;
         taskList.Add(newTask);
     }
 

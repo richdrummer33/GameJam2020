@@ -102,6 +102,8 @@ public class LookInteract : MonoBehaviour
             heldObject.transform.parent = null;
 
             heldRb.AddForce(grabPosition.transform.forward * throwForce, ForceMode.Impulse);
+            heldObject.OnThrow();
+
             heldRb = null;
             heldObject = null;
         }

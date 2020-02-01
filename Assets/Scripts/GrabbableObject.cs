@@ -20,4 +20,9 @@ public class GrabbableObject : MonoBehaviour
     {
         highlighter.SetActive(false);
     }
+
+    public virtual void OnThrow()
+    {
+        Debug.Log("Threw " + name);
+    }
 }
