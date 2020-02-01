@@ -7668,6 +7668,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 1830016793781178560, guid: 66736c5768405a946ae816bdc01b36c4,
+        type: 3}
+      propertyPath: cursorLock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1830016793781178566, guid: 66736c5768405a946ae816bdc01b36c4,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
