@@ -79,6 +79,16 @@ public class LookInteract : MonoBehaviour
             heldObject.transform.position = grabPosition.position;
             heldRb = heldObject.GetComponent<Rigidbody>();
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f))
+        {
+            if (hit.transform.tag == "Minigame")
+            {
+                hit.transform.GetComponent<Minigame>().Interact();
+            }
+        }
+
     }
 
     void AttemptRelease(float throwForce)
