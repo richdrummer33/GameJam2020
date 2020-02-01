@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     void CreateTask()
     {
-        var newTask = Instantiate(taskPrefab);
+        var newTask = Instantiate(taskPrefab, gameObject.transform);
         newTask.taskList = taskList;
         taskList.Add(newTask);
     }
