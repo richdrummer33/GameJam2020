@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DishesMinigame : Minigame
+public class DishesMinigame : TaskMinigame
 {
     public Transform dishSpawnPosition;
     public GameObject dishPrefab;
@@ -10,9 +10,8 @@ public class DishesMinigame : Minigame
     public List<Transform> dishRackslots = new List<Transform>();
     int currentSlot;
 
+    public float taskDuration;
     float dishSpawnInterval; // At min click rate
-
-    public bool isActive;
 
     public override void Interact()
     {
@@ -36,6 +35,12 @@ public class DishesMinigame : Minigame
                     animator.destination = dishRackslots[dishRackslots.Count - currentSlot - 1];
                     animator.Animate();
                     currentSlot++;
+
+                    if(currentTaskCompletion > taskDuration)
+                    {
+                        // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
+                        isActive = false;
+                    }
                 }
             }
 
