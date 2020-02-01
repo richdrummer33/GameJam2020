@@ -8,6 +8,7 @@ using UnityEngine;
 public class Minigame : MonoBehaviour
 {
     public float taskDuration;
+    public bool isActive;
 
     [SerializeField]
     protected float currentTaskCompletion; // Number of seconds contributed to task
