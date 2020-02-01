@@ -36,7 +36,7 @@ public class DishesMinigame : TaskMinigame
             base.Interact();
 
             currentClickRate = 1f / (Time.time - lastClickTime);
-            Debug.Log("Current click rate " + currentClickRate);
+            //Debug.Log("Current click rate " + currentClickRate);
 
             if (currentClickRate > minClickRate)
             {
@@ -48,7 +48,7 @@ public class DishesMinigame : TaskMinigame
                     spawnedDishes.Add(dish);
                     TweenAnimatePosition animator = dish.GetComponent<TweenAnimatePosition>();
                     animator.duration = 2f;
-                    Debug.Log("asd " + (dishRackslots.Count - currentSlot - 1));
+                    //Debug.Log("Current dish slot: " + (dishRackslots.Count - currentSlot - 1));
                     animator.destination = dishRackslots[dishRackslots.Count - currentSlot - 1];
                     animator.Animate();
                     currentSlot++;
