@@ -432,7 +432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb655b6117da9341863ba8b47c68aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
   grabPosition: {fileID: 2004335999}
+  grabStrength: 30
 --- !u!54 &963787921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -567,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighter: {fileID: 2073514774}
+  grabDrag: 5
 --- !u!65 &1911209002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -776,6 +779,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.062132, y: 0.15000004, z: 2.5000005}
   m_Center: {x: -3.031066, y: 0.07500026, z: 1.2500002}
+--- !u!1 &2086704555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2579931798222697405, guid: 1f26218e56af6a949af7dc8f68a226f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2579931798967096315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1555238098352469
 Transform:
   m_ObjectHideFlags: 0
@@ -3388,6 +3397,80 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &363696632848950153
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.8662798
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.985011
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644779704605056663, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855738405372597789, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: m_Name
+      value: Interactable Trash Bin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912303919123440706, guid: 34933a279f30b5d46980d869009ca847,
+        type: 3}
+      propertyPath: garbageBagPrefab
+      value: 
+      objectReference: {fileID: 2086704555}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34933a279f30b5d46980d869009ca847, type: 3}
 --- !u!23 &370353517006956401
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16021,6 +16104,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Character Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830016793781178560, guid: 66736c5768405a946ae816bdc01b36c4,
+        type: 3}
+      propertyPath: cursorVisible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830016793781178560, guid: 66736c5768405a946ae816bdc01b36c4,
+        type: 3}
+      propertyPath: cursorLock
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1830016793781178566, guid: 66736c5768405a946ae816bdc01b36c4,
         type: 3}
