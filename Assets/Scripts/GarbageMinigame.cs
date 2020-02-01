@@ -14,6 +14,11 @@ public class GarbageMinigame : Minigame
             garbageToDump.Remove(other.gameObject);
             Destroy(other.gameObject, 5f);
             currentTaskCompletion = 1f - garbageToDump.Count / numtoDump;
+
+            if(garbageToDump.Count == 0)
+            {
+                Finish();
+            }
         }
     }
 

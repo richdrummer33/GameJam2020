@@ -10,7 +10,6 @@ public class DishesMinigame : TaskMinigame
     public List<Transform> dishRackslots = new List<Transform>();
     int currentSlot;
 
-    public float taskDuration;
     float dishSpawnInterval; // At min click rate
 
     public override void Interact()
@@ -38,7 +37,7 @@ public class DishesMinigame : TaskMinigame
 
                     if(currentTaskCompletion > taskDuration)
                     {
-                        // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
+                        Finish(); // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
                         isActive = false;
                     }
                 }

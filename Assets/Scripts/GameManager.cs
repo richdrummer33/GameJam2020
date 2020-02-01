@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public float countdown;
     public float targetTime = 60.0f;
-    bool gameOver = false;
+    bool swamped = false;
 
-    public List<GameObject> taskList;
+    public List<BaseTask> taskList;
     public int maximumTasksBeforeSwamped = 5;
-    public GameObject taskPrefab;
+    public BaseTask taskPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameOver)
+        if (!swamped)
         {
             countdown -= Time.deltaTime;
             if (countdown <= 0f)
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     void CreateTask()
     {
         var newTask = Instantiate(taskPrefab);
+        newTask.taskList = taskList;
         taskList.Add(newTask);
     }
 
@@ -48,13 +49,13 @@ public class GameManager : MonoBehaviour
     {
         if (taskList.Count >= maximumTasksBeforeSwamped)
         {
-            GameOver();
+            GetSwamped();
         }
     }
 
-    void GameOver()
+    void GetSwamped()
     {
-        Debug.Log("Game over");
-        gameOver = true;
+        Debug.Log("You were swamped with tasks for the day, but the next day comes");
+        swamped = true;
     }
 }

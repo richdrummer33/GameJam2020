@@ -5,19 +5,28 @@ using UnityEngine;
 /// <summary>
 /// Base class for all minigames
 /// </summary>
-public class Minigame : MonoBehaviour
+public abstract class Minigame : MonoBehaviour
 {
-    [SerializeField]
-    protected float currentTaskCompletion; // Number of seconds contributed to task
+    public float taskDuration;
 
-    public float minClickRate = 1f; // Clicks per second to start progress
+    public bool isActive;
+
+    public BaseTask associatedTask;
 
     public string taskName;
 
-    public bool isActive;
+    [SerializeField]
+    protected float currentTaskCompletion; // Number of seconds contributed to task
+
 
     public virtual void Interact()
     {
 
     }
+
+    public void Finish()
+    {
+        associatedTask.Complete();
+    }
+
 }
