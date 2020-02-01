@@ -2,11 +2,19 @@
 
 public class LookInteract : MonoBehaviour
 {
+    public static LookInteract instance;
+
     GrabbableObject heldObject;
-    GrabbableObject selectedObject;
+    public GrabbableObject selectedObject;
+    Minigame selectedGame;
     public Transform grabPosition;
+    public float grabStrength = 30f;
     Rigidbody heldRb;
 
+    private void Start()
+    {
+        instance = this;
+    }
 
     void Update()
     {
@@ -23,7 +31,7 @@ public class LookInteract : MonoBehaviour
 
             if ( heldRb )
             {
-                heldRb.AddForce((grabPosition.position - heldObject.transform.position) * 10f);
+                heldRb.AddForce((grabPosition.position - heldObject.transform.position) * grabStrength);
 
                 Vector3 newDirection = Vector3.RotateTowards(heldObject.transform.forward, grabPosition.transform.forward, 10f * Time.deltaTime, 0f);
 
@@ -54,13 +62,20 @@ public class LookInteract : MonoBehaviour
                     AttemptGrab();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse0))
+            else if (obj.GetComponent<Minigame>())
             {
-                Minigame game = obj.GetComponent<Minigame>();
-                if (game)
+                selectedGame = obj.GetComponent<Minigame>();
+                selectedGame.Highlight();
+                
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    game.Interact();
+                    selectedGame.Interact();
                 }
+            }
+            else
+            {
+                selectedGame.UnHighlight();
+                selectedGame = null;
             }
         }
     }
@@ -80,7 +95,7 @@ public class LookInteract : MonoBehaviour
         return null;
     }
 
-    void AttemptGrab()
+    public void AttemptGrab()
     {
         if (selectedObject && !heldObject)
         {
@@ -89,6 +104,7 @@ public class LookInteract : MonoBehaviour
             heldObject.transform.parent = grabPosition;
             heldObject.transform.position = grabPosition.position;
             heldRb = heldObject.GetComponent<Rigidbody>();
+            heldObject.OnGrab();
 
             selectedObject.UnHighlight();
             selectedObject = null;
