@@ -39,6 +39,7 @@ public abstract class Minigame : MonoBehaviour
     public virtual void Activate()
     {
         isActive = true;
+        StartCoroutine(HighlightOnTaskStart());
     }
 
     public virtual void Finish()
@@ -47,9 +48,9 @@ public abstract class Minigame : MonoBehaviour
         associatedTask.Complete();
     }
 
-    public void Highlight()
+    public void Highlight(bool force)
     {
-        if(isActive && highlighter)
+        if(isActive && highlighter || force)
             highlighter.SetActive(true);
     }
 
@@ -70,5 +71,14 @@ public abstract class Minigame : MonoBehaviour
         Debug.Log("Resetting " + name);
 
         associatedTask = task; // Next task on list
+    }
+
+    IEnumerator HighlightOnTaskStart()
+    {
+        Highlight(true);
+
+        yield return new WaitForSeconds(6f);
+
+        UnHighlight();
     }
 }

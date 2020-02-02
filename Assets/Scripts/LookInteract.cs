@@ -61,7 +61,7 @@ public class LookInteract : MonoBehaviour
             {
                 //Debug.Log("Minigame interaction");
                 selectedGame = obj.GetComponent<Minigame>();
-                selectedGame.Highlight();
+                selectedGame.Highlight(false);
                 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {

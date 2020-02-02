@@ -24,6 +24,7 @@ public class GarbageMinigame : Minigame
         foreach(GarbageBinController bin in binsToEmpty)
         {
             bin.isActive = true;
+            bin.Highlight(true);
         }
     }
 
