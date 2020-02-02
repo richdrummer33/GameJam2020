@@ -20,7 +20,7 @@ public class LookInteract : MonoBehaviour
     {
         if ( heldObject )
         {
-            if ( Input.GetKeyUp( KeyCode.Mouse0 ) )
+            if ( Input.GetKeyDown( KeyCode.Mouse0 ) )
             {
                 AttemptRelease(0f);
             }

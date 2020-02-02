@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float countdown;
     public float targetTime = 60.0f;
-    bool swamped = false;
 
     public ObservableCollection<BaseTask> taskList = new ObservableCollection<BaseTask>();
     public int maximumTasksBeforeSwamped = 5;
@@ -78,15 +77,14 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Playing:
             case GameState.Lose:
-                if (!swamped)
+
+                countdown -= Time.deltaTime;
+                if (countdown <= 0f)
                 {
-                    countdown -= Time.deltaTime;
-                    if (countdown <= 0f)
-                    {
-                        countdown = targetTime;
-                        CountDownFinished();
-                    }
+                    countdown = targetTime;
+                    CountDownFinished();
                 }
+
                 break;
             case GameState.Intro:
 
@@ -94,14 +92,6 @@ public class GameManager : MonoBehaviour
                 if (introSceneCountdown <= 0f)
                 {
                     ChangeState(GameState.Dream);
-                }
-
-                break;
-            case GameState.MaxedFun:
-
-                if (taskList.Count == 0)
-                {
-                    Win();
                 }
 
                 break;
@@ -137,7 +127,8 @@ public class GameManager : MonoBehaviour
     void GetSwamped()
     {
         Debug.Log("You were swamped with tasks for the day, but the next day comes");
-        swamped = true;
+        taskList = new ObservableCollection<BaseTask>();
+        ChangeState(GameState.Start);
     }
 
     public void ChangeState(GameState newState)
