@@ -42,7 +42,6 @@ public class MailboxMinigame : Minigame
         base.ResetTask(task);
 
         isActive = true;
-
     }
 
 }

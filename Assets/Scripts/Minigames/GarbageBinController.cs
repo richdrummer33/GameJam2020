@@ -30,6 +30,8 @@ public class GarbageBinController : Minigame
 
             newBag.GetComponent<GrabbableGarbage>().binOfOrigin = this;
 
+            newBag.GetComponent<GrabbableGarbage>().binOfOrigin.Highlight(true); // Temporary for player to know where to go
+
             isActive = false;
 
             //GetComponent<Collider>().enabled = false;
