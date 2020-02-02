@@ -59,7 +59,7 @@ public class LookInteract : MonoBehaviour
             }
             else if (obj.GetComponent<Minigame>())
             {
-                Debug.Log("ASDSAD");
+                //Debug.Log("Minigame interaction");
                 selectedGame = obj.GetComponent<Minigame>();
                 selectedGame.Highlight();
                 
