@@ -107,7 +107,7 @@ public class RigidbodyFPSController : MonoBehaviour
             myRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
             // Jump
-            if (canJump && Input.GetButton("Jump"))
+            if (canJump && grounded && Input.GetButton("Jump"))
             {
                 myRigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
             }
