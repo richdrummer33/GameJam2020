@@ -7,8 +7,11 @@ public class TrampBehaviour : MonoBehaviour
     public GameObject bouncingobject;
     public Transform bouncingtransform;
     public bool triggered;
-    public float bounceforce = 2;
-    public Rigidbody rb;
+    public float bounceforce = 8;
+    public Vector3 disttocenter;
+    public float difficultyforce = 5;
+
+
     // public Rigidbody rb;
 
     // Start is called before the first frame update
@@ -18,26 +21,34 @@ public class TrampBehaviour : MonoBehaviour
         triggered = true;
         // Rigidbody rb = other.GetComponent<Rigidbody>();
         bouncingtransform = other.GetComponent<Transform>();
-        bouncingobject = other.gameObject;
-        
+        bouncingobject = other.gameObject; // set bouncingTHINGY to the collidingTHINGY
+
+        Vector3 flattenedpos = other.transform.position; 
+        flattenedpos.y = transform.position.y;
+        disttocenter = (flattenedpos - transform.position); // flatten position and then to get x & z distance from trampoline center
+        other.transform.GetComponent<Rigidbody>().AddForce(disttocenter *difficultyforce, ForceMode.Impulse); // use x & z distance from center to apply a destabilizing difficulty force, which is less severe the nearer to the "bullseye" the player landed
     }
 
 
     void Start()
     {
-       
+
 
     }
 
-    
+
     void Update()
     {
         if (triggered)
         {
-            bouncingobject.GetComponent<Rigidbody>().AddForce(bouncingtransform.up * bounceforce, ForceMode.Impulse);
+
+            bouncingobject.GetComponent<Rigidbody>().AddForce(bouncingtransform.up * bounceforce, ForceMode.Impulse); // make the bouncing thing bounce!
             triggered = false;
 
         }
     }
 }
+
+
+
 
