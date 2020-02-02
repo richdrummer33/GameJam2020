@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public ToDoList todoDisplay;
 
     public bool gamePaused;
+    bool swamped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -77,14 +78,15 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Playing:
             case GameState.Lose:
-
-                countdown -= Time.deltaTime;
-                if (countdown <= 0f)
+                if (!swamped)
                 {
-                    countdown = targetTime;
-                    CountDownFinished();
+                    countdown -= Time.deltaTime;
+                    if (countdown <= 0f)
+                    {
+                        countdown = targetTime;
+                        CountDownFinished();
+                    }
                 }
-
                 break;
             case GameState.Intro:
 
@@ -127,7 +129,8 @@ public class GameManager : MonoBehaviour
     void GetSwamped()
     {
         Debug.Log("You were swamped with tasks for the day, but the next day comes");
-        taskList = new ObservableCollection<BaseTask>();
+        swamped = true;
+        //taskList = new ObservableCollection<BaseTask>();
         ChangeState(GameState.Start);
     }
 
