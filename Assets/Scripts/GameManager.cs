@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     public int maximumTasksBeforeSwamped = 5;
     public BaseTask taskPrefab;
 
-    public enum GameState { Intro, Dream, Start, Playing, Win, Lose, NA } // Start state is for the time after you wake up, you discover note on fridge with task list (which enables the UI and "Playing" state)
+    // MaxedFun state for different style of ending; if you max out the fun-o-meter, then you can finish all tasks with ease (fun-o-meter no longer drops). You complete the tasks, THEN you take a nap and wake up as a kid again. The idea here is we want to give the impression of striking a balance
+    public enum GameState { Intro, Dream, Start, Playing, Win, Lose, NA, Outro, MaxedFun } // Start state is for the time after you wake up, you discover note on fridge with task list (which enables the UI and "Playing" state)
     public GameState gameState = GameState.Intro;
 
     public delegate void StateChangeEvent(GameState newState);
@@ -29,9 +30,7 @@ public class GameManager : MonoBehaviour
 
     public ToDoList todoDisplay;
 
-    public bool gameOver;
     public bool gamePaused;
-
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +71,13 @@ public class GameManager : MonoBehaviour
                 ChangeState(GameState.Dream);
             }
         }
+        else if (gameState == GameState.MaxedFun)
+        {
+            if(taskList.Count == 0)
+            {
+                Win();
+            }
+        }
     }
 
     void CountDownFinished()
@@ -84,13 +90,6 @@ public class GameManager : MonoBehaviour
         var newTask = Instantiate(taskPrefab, gameObject.transform);
         newTask.taskList = taskList;
     }
-
-    /*
-    public void TaskCreated(BaseTask newlyCreatedTask)
-    {
-        OnCreateTask(newlyCreatedTask.assignedMinigame.taskName);
-    }
-    */
 
     void CheckSwampedWithTasks()
     {
@@ -122,17 +121,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void MaxedFun()
+    {
+        Debug.Log("You're now max fun");
+        ChangeState(GameState.MaxedFun);
+    }
+
     public void Win()
     {
-        gameOver = true;
         Debug.Log("You're now fun, game won");
-        OnStateChange(GameState.Win);
+        ChangeState(GameState.Win);
+        todoDisplay.gameObject.SetActive(false); // Ideally, the UI fades* out and player drops the task list on the ground 
     }
 
     public void Lose()
     {
-        gameOver = true;
         Debug.Log("You've forgot what fun is, game lost");
-        OnStateChange(GameState.Lose);
+        ChangeState(GameState.Lose);
+        todoDisplay.gameObject.SetActive(false);
     }
 }

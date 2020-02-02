@@ -13,6 +13,8 @@ public class Cutscene : MonoBehaviour
     public bool fadeTransition; // visual fading?
     public float fadeDuration; // How long to fade to black 
     public Renderer visionBlocker; // Optional
+    public bool stayfaded = false;
+    public Color targetFadeColor = Color.black;
 
     private void Start()
     {
@@ -36,7 +38,9 @@ public class Cutscene : MonoBehaviour
         {
             float t = 0f;
             Material bMat = visionBlocker.material;
-            Color col = bMat.color;
+            Color col = targetFadeColor; //bMat.color;
+            RigidbodyFPSController.instance.canMove = false;
+
             while (t < fadeDuration)
             {
                 col.a = t / fadeDuration;
@@ -62,11 +66,11 @@ public class Cutscene : MonoBehaviour
         if (character)
             character.SetActive(false);
 
-        if (visionBlocker) // Fade back transparent (visible)
+        if (visionBlocker && !stayfaded) // Fade back transparent (visible)
         {
             float t = 0f;
             Material bMat = visionBlocker.material;
-            Color col = bMat.color;
+            Color col = targetFadeColor; // bMat.color;
 
             while (t < fadeDuration)
             {
@@ -77,5 +81,7 @@ public class Cutscene : MonoBehaviour
                 yield return null;
             }
         }
+
+        RigidbodyFPSController.instance.canMove = true;
     }
 }

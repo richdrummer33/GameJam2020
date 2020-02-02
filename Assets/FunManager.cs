@@ -40,19 +40,19 @@ public class FunManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.gameOver && GameManager.instance.gameState == GameManager.GameState.Playing)
+        if (GameManager.instance.gameState == GameManager.GameState.Playing)
         {
             ChangeFun(-decaySpeed);
-
+           
             if (Amount <= 0)
             {
                 GameManager.instance.Lose();
                 return;
             }
 
-            if (Amount >= 100)
+            if (Amount >= 99)
             {
-                GameManager.instance.Win();
+                GameManager.instance.MaxedFun();
                 return;
             }
         }

@@ -61,7 +61,7 @@ public abstract class Minigame : MonoBehaviour
 
     protected void UpdateFun(float value)
     {
-        Debug.Log("Added " + value + " fun");
+       // Debug.Log("Added " + value + " fun");
         funManager.ChangeFun(value);
     }
 

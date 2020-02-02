@@ -123,11 +123,12 @@ public class LookInteract : MonoBehaviour
         {
             heldObject.transform.parent = null;
 
-            heldRb.AddForce(grabPosition.transform.forward * throwForce, ForceMode.Impulse);
-            heldObject.OnThrow();
-
-            heldRb = null;
-            heldObject = null;
+            Vector3 throwVector = grabPosition.transform.forward * throwForce;
+            if (heldObject.OnThrow(throwVector) || throwForce == 0f)
+            {
+                heldRb = null;
+                heldObject = null;
+            }
         }
     }
 }

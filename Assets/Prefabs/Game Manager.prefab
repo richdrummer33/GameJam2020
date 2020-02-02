@@ -46,13 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introSceneCountdown: 5
   countdown: 0
-  targetTime: 10
+  targetTime: 0.1
   maximumTasksBeforeSwamped: 5
   taskPrefab: {fileID: -3085624429185822972, guid: dd9bedbfcb9834e7aa7cd8919446f3e0,
     type: 3}
-  gameState: 0
+  gameState: 3
   todoDisplay: {fileID: 0}
-  gameOver: 0
   gamePaused: 0
 --- !u!114 &4906160202454287196
 MonoBehaviour:

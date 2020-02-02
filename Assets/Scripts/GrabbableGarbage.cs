@@ -7,11 +7,13 @@ public class GrabbableGarbage : GrabbableObject
     public float throwTime;
     bool isThrown;
     public GarbageBinController binOfOrigin; // Bin that spawned this bag (if spawned)
+    public bool smallTrash = false;
 
-    public override void OnThrow()
+    public override bool OnThrow(Vector3 throwVector)
     {
-        base.OnThrow();
         isThrown = true;
+        base.OnThrow(throwVector);
+        return true;
     }
 
     private void OnCollisionEnter(Collision collision)

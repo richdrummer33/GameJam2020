@@ -48,7 +48,6 @@ public class GarbageMinigame : Minigame
 
                 UpdateFun(garbageBag.throwTime * funFactor);
 
-                Destroy(other.gameObject, 5f);
                 currentTaskCompletion = 1f - numDumped / numtoDump;
 
                 if (numDumped == numtoDump)
@@ -56,6 +55,8 @@ public class GarbageMinigame : Minigame
                     Finish();
                 }
             }
+
+            Destroy(other.gameObject, 2f);
         }
     }
 
