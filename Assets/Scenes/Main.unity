@@ -386,8 +386,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 115.89182, y: 7.0293574, z: 76.66361}
-  m_Center: {x: 4.180098, y: -5.79841, z: -11.897201}
+  m_Size: {x: 98.67964, y: 7.0293574, z: 66.99924}
+  m_Center: {x: 4.316014, y: -5.7983265, z: -15.415903}
 --- !u!114 &251022891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +406,7 @@ MonoBehaviour:
   associatedTask: {fileID: 0}
   taskName: Take out all the garbage
   highlighter: {fileID: 0}
+  highlightOnLook: 1
   minigameType: 0
   currentTaskCompletion: 0
   binsToEmpty: []
@@ -1526,6 +1527,7 @@ MonoBehaviour:
   associatedTask: {fileID: 0}
   taskName: Fetch the mail!
   highlighter: {fileID: 919588006}
+  highlightOnLook: 1
   minigameType: 0
   currentTaskCompletion: 0
   letterPrefab: {fileID: 1548381975086887585, guid: 56173381417111b43b295200ed485eed,
@@ -1925,6 +1927,7 @@ MonoBehaviour:
   associatedTask: {fileID: 0}
   taskName: Go get the mail!
   highlighter: {fileID: 0}
+  highlightOnLook: 1
   minigameType: 0
   currentTaskCompletion: 0
   garbageBagPrefab: {fileID: 0}
@@ -3048,6 +3051,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1529192333, guid: 6dc454921bb66d3489b00ad7fb1f7f1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 765699534770171353, guid: 6dc454921bb66d3489b00ad7fb1f7f1c,
         type: 3}
       propertyPath: m_Size.y
@@ -4475,6 +4482,11 @@ PrefabInstance:
       propertyPath: funMeter
       value: 
       objectReference: {fileID: 1624895330}
+    - target: {fileID: 4906160202454287196, guid: 6754ff358cb8cf64c9773dbcea38198b,
+        type: 3}
+      propertyPath: decaySpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4906160202454287197, guid: 6754ff358cb8cf64c9773dbcea38198b,
         type: 3}
       propertyPath: m_Name

@@ -18,6 +18,8 @@ public abstract class Minigame : MonoBehaviour
 
     public GameObject highlighter;
 
+    public bool highlightOnLook = true;
+
     public enum MinigameType { Task, Fun }
     public MinigameType minigameType;
 
@@ -28,7 +30,10 @@ public abstract class Minigame : MonoBehaviour
     {
         if (highlighter)
             highlighter.SetActive(false);
+
         funManager = FindObjectOfType<FunManager>();
+
+        GameManager.OnTaskComplete += Highlight;
     }
 
     public virtual void Interact()
@@ -46,11 +51,12 @@ public abstract class Minigame : MonoBehaviour
     {
         isActive = false;
         associatedTask.Complete();
+        GameManager.instance.TaskCompleted(taskName);
     }
 
     public void Highlight(bool force)
     {
-        if(isActive && highlighter || force)
+        if(highlighter && (isActive && highlightOnLook || force))
             highlighter.SetActive(true);
     }
 
