@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!swamped && gameState == GameState.Playing)
+        bool gameStateActive = GameManager.instance.gameState == GameManager.GameState.Playing || GameManager.instance.gameState == GameManager.GameState.Lose;
+
+        if (!swamped && gameStateActive)
         {
             countdown -= Time.deltaTime;
             if (countdown <= 0f)

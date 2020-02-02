@@ -28,18 +28,16 @@ public class BaseTask : MonoBehaviour
 
         foreach (BaseTask task in taskList)
         {
-            if (task.assignedMinigame.taskName == completedTaskName)
+            if (task != this) // RB added - switch to new task on the list to be active
             {
-                task.assignedMinigame.ResetTask(task);
+                if (task.assignedMinigame.taskName == completedTaskName)
+                {
+                    task.assignedMinigame.ResetTask(task);
+                }
             }
         }
 
         taskList.Remove(this);
         Destroy(gameObject);
-    }
-
-    public void OnRemove() //RB added to account for multiple same task on list
-    {
-
     }
 }

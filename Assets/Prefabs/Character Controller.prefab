@@ -154,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 1830016793612416508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.569, z: -10}
-  m_LocalScale: {x: 0.5451087, y: 0.5451087, z: 0.5451087}
+  m_LocalScale: {x: 0.5451087, y: 0.4410474, z: 0.5451087}
   m_Children:
   - {fileID: 1830016793781178561}
   m_Father: {fileID: 0}
@@ -255,6 +255,8 @@ MonoBehaviour:
   jumpHeight: 1
   grounded: 0
   canMove: 1
+  maxSprintDuration: 4
+  sprintSpeedModifier: 1.33
 --- !u!136 &1256628639
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -43,8 +43,8 @@ public abstract class Minigame : MonoBehaviour
 
     public virtual void Finish()
     {
-        associatedTask.Complete();
         isActive = false;
+        associatedTask.Complete();
     }
 
     public void Highlight()

@@ -15,6 +15,12 @@ public class RigidbodyFPSController : MonoBehaviour
     public bool grounded = true;
     public bool canMove = true;
 
+    public float maxSprintDuration = 4f;
+    float sprintTime;
+    public float sprintSpeedModifier = 1.5f;
+    float walkSpeed;
+    bool scaled;
+
     Rigidbody myRigidbody;
 
     void Awake()
@@ -22,13 +28,40 @@ public class RigidbodyFPSController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody>();
         myRigidbody.freezeRotation = true;
         myRigidbody.useGravity = false;
+        walkSpeed = speed;
+        GameManager.OnStateChange += GrowUp;
         instance = this;
+    }
+
+    public void GrowUp(GameManager.GameState newState)
+    {
+        if(newState == GameManager.GameState.Start && !scaled)
+        {
+            Vector3 scale = transform.localScale;
+            scale.y *= 1.65f;
+            transform.localScale = scale;
+            scaled = true;
+        }
     }
 
     void FixedUpdate()
     {
         if (canMove)
         {
+            speed = walkSpeed;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                if (sprintTime < maxSprintDuration)
+                {
+                    speed = walkSpeed * sprintSpeedModifier;
+                    sprintTime += Time.deltaTime;
+                }
+            }
+            else
+            {
+                sprintTime = Mathf.Clamp(sprintTime - Time.deltaTime, 0f, Mathf.Infinity);
+            }
+
             Vector3 fwdVel = Camera.main.transform.forward.normalized;
             fwdVel.y = 0f;
             if (Input.GetKey(KeyCode.W))

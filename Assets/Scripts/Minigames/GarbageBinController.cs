@@ -18,7 +18,9 @@ public class GarbageBinController : Minigame
     {
         base.Interact();
 
-        if (isActive) //&& numPiecesGarbage == maxPiecesGarbage)
+        bool gameStateActive = GameManager.instance.gameState == GameManager.GameState.Playing || GameManager.instance.gameState == GameManager.GameState.Lose;
+
+        if (isActive && gameStateActive) //&& numPiecesGarbage == maxPiecesGarbage)
         {
             //numPiecesGarbage = 0;
 
