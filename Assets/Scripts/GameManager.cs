@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public delegate void CreateTaskEvent(string taskName);
     public static CreateTaskEvent OnCreateTask;
 
-    public delegate void TaskCompletedEvent(bool highlightOthers);
+    public delegate void TaskCompletedEvent(string taskName);
     public static TaskCompletedEvent OnTaskComplete;
 
     public ToDoList todoDisplay;
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void TaskCompleted(string taskName)
     {
-        OnTaskComplete(true);
+        OnTaskComplete(taskName);
     }
 
     void CheckSwampedWithTasks()

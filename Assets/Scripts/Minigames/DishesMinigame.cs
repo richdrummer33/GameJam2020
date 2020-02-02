@@ -66,6 +66,9 @@ public class DishesMinigame : Minigame
                     animator.Animate();
                     currentSlot++;
 
+                    //if (!source.isPlaying)
+                        //PlaySound();
+
                     if (spawnedDishes.Count >= dishRackslots.Count)
                     {
                         Finish(); // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
@@ -87,11 +90,38 @@ public class DishesMinigame : Minigame
     {
         base.Start();
         dishSpawnInterval = taskDuration / dishRackslots.Count;
+
+        //source.loop = true;
+        //source.volume = 0f;
+        //source.Play(); // Loops
     }
 
-    // Update is called once per frame
-    void Update()
+    float fadeDuration = 0.5f;
+    IEnumerator PlaySound()
     {
+        float t = 0f;
+        if (loopingSound)
+        {
+            while (t < fadeDuration)
+            {
+                source.volume = t / fadeDuration;
+                t += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
 
+    IEnumerator StopSound()
+    {
+        float t = 0f;
+        if (loopingSound)
+        {
+            while (t < fadeDuration)
+            {
+                source.volume = 1f - t / fadeDuration;
+                t += Time.deltaTime;
+                yield return null;
+            }
+        }
     }
 }

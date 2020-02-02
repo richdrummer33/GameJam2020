@@ -19,6 +19,7 @@ public class BaseTask : MonoBehaviour
         assignedMinigame.associatedTask = this;
         name = assignedMinigame.taskName;
         taskList.Add(this);
+        GameManager.OnTaskComplete += OnOtherTaskComplete;
         //GameManager.instance.TaskCreated(this);
     }
 
@@ -37,7 +38,16 @@ public class BaseTask : MonoBehaviour
             }
         }
 
+        GameManager.instance.TaskCompleted(assignedMinigame.taskName);
         taskList.Remove(this);
         Destroy(gameObject);
+    }
+
+    public void OnOtherTaskComplete(string name)
+    {
+        if(name != assignedMinigame.taskName)
+        {
+            assignedMinigame.TempHighlight();
+        }
     }
 }

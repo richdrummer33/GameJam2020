@@ -20,12 +20,16 @@ public abstract class Minigame : MonoBehaviour
 
     public bool highlightOnLook = true;
 
+    public bool loopingSound;
+    protected AudioSource source;
+    float defaultVolume;
+
     public enum MinigameType { Task, Fun }
     public MinigameType minigameType;
 
     [SerializeField]
     protected float currentTaskCompletion; // Number of seconds contributed to task
-
+    
     protected virtual void Start()
     {
         if (highlighter)
@@ -33,7 +37,12 @@ public abstract class Minigame : MonoBehaviour
 
         funManager = FindObjectOfType<FunManager>();
 
-        GameManager.OnTaskComplete += Highlight;
+        if(source == null)
+            gameObject.AddComponent<AudioSource>();
+
+        //source = GetComponent<AudioSource>();
+        //defaultVolume = source.volume;
+        //GameManager.OnTaskComplete += TempHighlight;
     }
 
     public virtual void Interact()
@@ -51,13 +60,18 @@ public abstract class Minigame : MonoBehaviour
     {
         isActive = false;
         associatedTask.Complete();
-        GameManager.instance.TaskCompleted(taskName);
     }
 
     public void Highlight(bool force)
     {
         if(highlighter && (isActive && highlightOnLook || force))
             highlighter.SetActive(true);
+    }
+
+    public void TempHighlight()
+    {
+        if(highlighter != null)
+            StartCoroutine(HighlightOnTaskStart());
     }
 
     public void UnHighlight()

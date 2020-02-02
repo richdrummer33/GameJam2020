@@ -8,6 +8,7 @@ using UnityEngine;
 public class GarbageBinController : Minigame
 {
     public GameObject garbageBagPrefab;
+    GarbageMinigame bigTrashMinigame;
 
     [SerializeField]
     int numPiecesGarbage = 5;
@@ -16,6 +17,11 @@ public class GarbageBinController : Minigame
 
     public float funFactor;
 
+    protected override void Start()
+    {
+        base.Start();
+        bigTrashMinigame = FindObjectOfType<GarbageMinigame>();
+    }
     public override void Interact()
     {
         base.Interact();
@@ -30,7 +36,7 @@ public class GarbageBinController : Minigame
 
             newBag.GetComponent<GrabbableGarbage>().binOfOrigin = this;
 
-            newBag.GetComponent<GrabbableGarbage>().binOfOrigin.Highlight(true); // Temporary for player to know where to go
+            bigTrashMinigame.TempHighlight(); // Temporary for player to know where to go
 
             isActive = false;
 

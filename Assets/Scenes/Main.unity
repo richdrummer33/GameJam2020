@@ -352,7 +352,6 @@ GameObject:
   - component: {fileID: 251022894}
   - component: {fileID: 251022893}
   - component: {fileID: 251022892}
-  - component: {fileID: 251022891}
   - component: {fileID: 251022890}
   m_Layer: 0
   m_Name: Highlight
@@ -388,30 +387,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 98.67964, y: 7.0293574, z: 66.99924}
   m_Center: {x: 4.316014, y: -5.7983265, z: -15.415903}
---- !u!114 &251022891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251022888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6496024ae760aa44aee65695b9ce15a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskDuration: 0
-  isActive: 0
-  funManager: {fileID: 0}
-  associatedTask: {fileID: 0}
-  taskName: Take out all the garbage
-  highlighter: {fileID: 0}
-  highlightOnLook: 1
-  minigameType: 0
-  currentTaskCompletion: 0
-  binsToEmpty: []
-  numDumped: 0
-  funFactor: 75
 --- !u!65 &251022892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -523,6 +498,108 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251022888}
   m_Mesh: {fileID: 8009832611946328954, guid: c53128388ebd1fc4e94b00921ddfa608, type: 3}
+--- !u!1 &263665651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3393342293008497188, guid: a4140e8bb944d5441b4fb90dff866eab,
+    type: 3}
+  m_PrefabInstance: {fileID: 874606503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &263665662
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263665651}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &295594255
 PrefabInstance:
   m_ObjectHideFlags: 0
