@@ -1,37 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-
     public float countdown;
     public float targetTime = 60.0f;
     bool swamped = false;
-    bool cutsceneActive = false;
 
-    public List<BaseTask> taskList = new List<BaseTask>();
+    public ObservableCollection<BaseTask> taskList = new ObservableCollection<BaseTask>();
     public int maximumTasksBeforeSwamped = 5;
     public BaseTask taskPrefab;
-    public CutsceneManager cutsceneMgr;
-    public enum GameState { Start, Playing, Win, Lose }
-    public GameState gameState = GameState.Start;
+
+    public ToDoList todoDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        cutsceneMgr.StartCutscene(GameState.Start);
-
         countdown = targetTime;
+        taskList.CollectionChanged += TaskList_CollectionChanged;
+    }
 
-        instance = this;
+    private void TaskList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        todoDisplay.UpdateList(taskList.Select(x => x.name).ToList());
+        CheckSwampedWithTasks();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!swamped && gameState == GameState.Playing)
+        if (!swamped)
         {
             countdown -= Time.deltaTime;
             if (countdown <= 0f)
@@ -45,14 +45,12 @@ public class GameManager : MonoBehaviour
     void CountDownFinished()
     {
         CreateTask();
-        CheckSwampedWithTasks();
     }
 
     void CreateTask()
     {
         var newTask = Instantiate(taskPrefab, gameObject.transform);
         newTask.taskList = taskList;
-        taskList.Add(newTask);
     }
 
     void CheckSwampedWithTasks()
@@ -67,10 +65,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You were swamped with tasks for the day, but the next day comes");
         swamped = true;
-    }
-
-    public void SetState(GameState newState)
-    {
-        gameState = newState;
     }
 }

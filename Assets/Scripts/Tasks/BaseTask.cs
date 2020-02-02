@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class BaseTask : MonoBehaviour
 {
     public List<Minigame> possiblMiniGames;
     public Minigame assignedMinigame;
-    public List<BaseTask> taskList;
+    public ObservableCollection<BaseTask> taskList;
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class BaseTask : MonoBehaviour
         assignedMinigame.Activate();
         assignedMinigame.associatedTask = this;
         name = assignedMinigame.taskName;
+        taskList.Add(this);
     }
 
     // Update is called once per frame
