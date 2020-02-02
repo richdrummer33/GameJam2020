@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     {
         countdown = targetTime;
         taskList.CollectionChanged += TaskList_CollectionChanged;
-        todoDisplay.gameObject.SetActive(false);
         instance = this;
 
         OnStateChange += SwitchUI;
