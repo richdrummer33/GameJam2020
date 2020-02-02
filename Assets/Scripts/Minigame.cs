@@ -10,8 +10,6 @@ public abstract class Minigame : MonoBehaviour
     public float taskDuration;
     public bool isActive;
 
-    public bool isActive;
-
     public BaseTask associatedTask;
 
     public string taskName;

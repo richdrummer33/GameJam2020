@@ -12,10 +12,11 @@ public class BaseTask : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        possiblMiniGames = FindObjectsOfType<Minigame>().ToList();
+        possiblMiniGames = FindObjectsOfType<Minigame>().Where((x) => x.minigameType == Minigame.MinigameType.Task).ToList();
         assignedMinigame = possiblMiniGames[Random.Range(0, possiblMiniGames.Count)];
         assignedMinigame.Activate();
         assignedMinigame.associatedTask = this;
+        name = assignedMinigame.taskName;
     }
 
     // Update is called once per frame
