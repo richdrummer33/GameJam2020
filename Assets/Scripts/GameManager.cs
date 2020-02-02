@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,14 +9,23 @@ public class GameManager : MonoBehaviour
     public float targetTime = 60.0f;
     bool swamped = false;
 
-    public List<BaseTask> taskList = new List<BaseTask>();
+    public ObservableCollection<BaseTask> taskList = new ObservableCollection<BaseTask>();
     public int maximumTasksBeforeSwamped = 5;
     public BaseTask taskPrefab;
+
+    public ToDoList todoDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
         countdown = targetTime;
+        taskList.CollectionChanged += TaskList_CollectionChanged;
+    }
+
+    private void TaskList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        todoDisplay.UpdateList(taskList.Select(x => x.name).ToList());
+        CheckSwampedWithTasks();
     }
 
     // Update is called once per frame
@@ -35,14 +45,12 @@ public class GameManager : MonoBehaviour
     void CountDownFinished()
     {
         CreateTask();
-        CheckSwampedWithTasks();
     }
 
     void CreateTask()
     {
         var newTask = Instantiate(taskPrefab, gameObject.transform);
         newTask.taskList = taskList;
-        taskList.Add(newTask);
     }
 
     void CheckSwampedWithTasks()

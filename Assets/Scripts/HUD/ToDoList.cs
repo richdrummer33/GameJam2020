@@ -12,21 +12,12 @@ public class ToDoList : MonoBehaviour
 
     void Start()
     {
-        AddItem("list");
-        AddItem("of");
-        AddItem("things");
+        
     }
 
-    public void AddItem( string itemText )
+    public void UpdateList(List<string> newList )
     {
-        items.Add(itemText);
-
-        UpdateDisplay();
-    }
-
-    public void RemoveItem(string itemText)
-    {
-        _ = items.Remove(itemText);
+        items = newList;
 
         UpdateDisplay();
     }

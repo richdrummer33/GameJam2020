@@ -63,9 +63,4 @@ public abstract class Minigame : MonoBehaviour
     {
         funManager.ChangeFun(value);
     }
-
-    public virtual float FunFactor(float fun)
-    {
-        return 0;
-    }
 }

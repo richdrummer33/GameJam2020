@@ -26,7 +26,7 @@ public class GarbageMinigame : Minigame
                 Debug.Log("Bin accepts this bag");
                 numDumped++;
 
-                FunFactor(garbageBag.throwTime);
+                UpdateFun(garbageBag.throwTime * 50f);
 
                 if(destroyGarbage)
                     Destroy(other.gameObject, 5f);
@@ -38,11 +38,6 @@ public class GarbageMinigame : Minigame
                 }
             }
         }
-    }
-
-    public override float FunFactor(float fun)
-    {
-        return fun;
     }
 
     // Start is called before the first frame update
