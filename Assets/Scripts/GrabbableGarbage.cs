@@ -6,6 +6,7 @@ public class GrabbableGarbage : GrabbableObject
 {
     public float throwTime;
     bool isThrown;
+    public GarbageBinController binOfOrigin; // Bin that spawned this bag (if spawned)
 
     public override void OnThrow()
     {

@@ -108,7 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5967121245785607169}
-  m_LocalRotation: {x: 7.1054274e-15, y: 1, z: -0.00000008940697, w: 0.00000019470721}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0.00000028088027}
   m_LocalPosition: {x: -12.455528, y: 0.661175, z: -3.7119877}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
@@ -116,7 +116,7 @@ Transform:
   - {fileID: 5500773562523472436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
 --- !u!33 &2425373958654347287
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -191,9 +191,10 @@ MonoBehaviour:
   taskDuration: 10
   isActive: 1
   associatedTask: {fileID: 0}
-  taskName: 
+  taskName: Clean all the dishes!
+  highlighter: {fileID: 0}
+  minigameType: 0
   currentTaskCompletion: 0
-  minClickRate: 1
   dishSpawnPosition: {fileID: 5500773563393514110}
   dishPrefab: {fileID: 3911801668398229523, guid: d6dff25c51eedb348ba234a98d5ae1b1,
     type: 3}
@@ -218,6 +219,7 @@ MonoBehaviour:
   - {fileID: 5500773563174310157}
   - {fileID: 5500773562617534840}
   - {fileID: 5500773563681743784}
+  minClickRate: 1
 --- !u!1001 &5500773561881020410
 PrefabInstance:
   m_ObjectHideFlags: 0

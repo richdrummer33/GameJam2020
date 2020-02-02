@@ -179,7 +179,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478286285945451301}
-  m_LocalRotation: {x: -0, y: -0.6087605, z: -0, w: 0.79335415}
+  m_LocalRotation: {x: 0, y: -0.60876137, z: 0, w: 0.7933534}
   m_LocalPosition: {x: 1.115971, y: 0.285, z: -11.362896}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
@@ -298,13 +298,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988599010833185320}
-  m_LocalRotation: {x: -0.48108697, y: -0, z: -0, w: 0.87667286}
-  m_LocalPosition: {x: 0, y: 43.5, z: 24.3}
+  m_LocalRotation: {x: -0.5445698, y: 0.009542673, z: -0.017389296, w: 0.83848095}
+  m_LocalPosition: {x: 2.9163024, y: 66.12066, z: 13.4249}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2510955063410344246}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: -57.513004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -65.908005, y: 4.9110003, z: -5.5610003}
 --- !u!33 &2776168263993158505
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -591,8 +591,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 101.98464, y: 76.1882, z: 61.369167}
-  m_Center: {x: 4.179893, y: 28.781, z: -11.202006}
+  m_Size: {x: 101.98464, y: 70.3863, z: 61.369164}
+  m_Center: {x: 4.1798954, y: 25.880056, z: -11.202002}
 --- !u!114 &7467531806847494693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,10 +608,13 @@ MonoBehaviour:
   taskDuration: 0
   isActive: 0
   associatedTask: {fileID: 0}
-  taskName: 
+  taskName: Take out all the garbage
+  highlighter: {fileID: 0}
+  minigameType: 0
   currentTaskCompletion: 0
-  garbageToDump:
-  - {fileID: 0}
+  binsToEmpty: []
+  numDumped: 0
+  destroyGarbage: 1
 --- !u!65 &5496755990251678203
 BoxCollider:
   m_ObjectHideFlags: 0
