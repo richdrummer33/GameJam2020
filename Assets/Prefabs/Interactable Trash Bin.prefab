@@ -107,8 +107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskDuration: 0
   isActive: 1
+  funManager: {fileID: 0}
   associatedTask: {fileID: 0}
-  taskName: 
+  taskName: Take out all the garbage
   highlighter: {fileID: 7185965584731168391}
   minigameType: 1
   currentTaskCompletion: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
     type: 3}
   numPiecesGarbage: 5
   maxPiecesGarbage: 5
+  funFactor: 37.5
 --- !u!1 &4855738405372597789
 GameObject:
   m_ObjectHideFlags: 0

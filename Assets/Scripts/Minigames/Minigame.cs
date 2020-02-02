@@ -43,8 +43,8 @@ public abstract class Minigame : MonoBehaviour
 
     public virtual void Finish()
     {
-        associatedTask.Complete();
         isActive = false;
+        associatedTask.Complete();
     }
 
     public void Highlight()
@@ -61,6 +61,14 @@ public abstract class Minigame : MonoBehaviour
 
     protected void UpdateFun(float value)
     {
+       // Debug.Log("Added " + value + " fun");
         funManager.ChangeFun(value);
+    }
+
+    public virtual void ResetTask(BaseTask task)
+    {
+        Debug.Log("Resetting " + name);
+
+        associatedTask = task; // Next task on list
     }
 }

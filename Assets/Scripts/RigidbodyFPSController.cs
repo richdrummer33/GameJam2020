@@ -5,13 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class RigidbodyFPSController : MonoBehaviour
 {
-    
+    public static RigidbodyFPSController instance;
+
     public float speed = 10.0f;
     public float gravity = 10.0f;
     public float maxVelocityChange = 10.0f;
     public bool canJump = true;
     public float jumpHeight = 2.0f;
     public bool grounded = true;
+    public bool canMove = true;
+
+    public float maxSprintDuration = 4f;
+    float sprintTime;
+    public float sprintSpeedModifier = 1.5f;
+    float walkSpeed;
+    bool scaled;
 
     Rigidbody myRigidbody;
 
@@ -20,13 +28,40 @@ public class RigidbodyFPSController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody>();
         myRigidbody.freezeRotation = true;
         myRigidbody.useGravity = false;
+        walkSpeed = speed;
+        GameManager.OnStateChange += GrowUp;
+        instance = this;
+    }
+
+    public void GrowUp(GameManager.GameState newState)
+    {
+        if(newState == GameManager.GameState.Start && !scaled)
+        {
+            Vector3 scale = transform.localScale;
+            scale.y *= 1.65f;
+            transform.localScale = scale;
+            scaled = true;
+        }
     }
 
     void FixedUpdate()
     {
-        grounded = true; // forcing grounded=true to allow trampoline testing with movement in air
-        if (grounded)
+        if (canMove)
         {
+            speed = walkSpeed;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                if (sprintTime < maxSprintDuration)
+                {
+                    speed = walkSpeed * sprintSpeedModifier;
+                    sprintTime += Time.deltaTime;
+                }
+            }
+            else
+            {
+                sprintTime = Mathf.Clamp(sprintTime - Time.deltaTime, 0f, Mathf.Infinity);
+            }
+
             Vector3 fwdVel = Camera.main.transform.forward.normalized;
             fwdVel.y = 0f;
             if (Input.GetKey(KeyCode.W))
@@ -72,7 +107,7 @@ public class RigidbodyFPSController : MonoBehaviour
             myRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
             // Jump
-            if (canJump && Input.GetButton("Jump"))
+            if (canJump && grounded && Input.GetButton("Jump"))
             {
                 myRigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
             }
@@ -86,7 +121,8 @@ public class RigidbodyFPSController : MonoBehaviour
 
     void OnCollisionStay()
     {
-        grounded = true;
+        if(tag != "IgnoreCollision")
+            grounded = true;
     }
 
     float CalculateJumpVerticalSpeed()
@@ -95,4 +131,12 @@ public class RigidbodyFPSController : MonoBehaviour
         // for the character to reach at the apex.
         return Mathf.Sqrt(2 * jumpHeight * gravity);
     }
+
+    public void Teleport(Transform pos)
+    {
+        transform.position = pos.position;
+    }
+
+
+
 }

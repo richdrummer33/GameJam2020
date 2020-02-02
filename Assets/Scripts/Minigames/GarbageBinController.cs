@@ -14,13 +14,18 @@ public class GarbageBinController : Minigame
 
     public int maxPiecesGarbage = 5;
 
+    public float funFactor;
+
     public override void Interact()
     {
         base.Interact();
 
-        if (isActive && numPiecesGarbage == maxPiecesGarbage)
+        bool gameStateActive = GameManager.instance.gameState == GameManager.GameState.Playing || GameManager.instance.gameState == GameManager.GameState.Lose || GameManager.instance.gameState == GameManager.GameState.MaxedFun;
+
+        if (isActive && gameStateActive) //&& numPiecesGarbage == maxPiecesGarbage)
         {
-            numPiecesGarbage = 0;
+            //numPiecesGarbage = 0;
+
             GameObject newBag = Instantiate(garbageBagPrefab, transform.position, garbageBagPrefab.transform.rotation, null);
 
             newBag.GetComponent<GrabbableGarbage>().binOfOrigin = this;
@@ -37,18 +42,23 @@ public class GarbageBinController : Minigame
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<GrabbableTrashBits>())
+        GrabbableGarbage trash = other.GetComponent<GrabbableGarbage>();
+
+        if (trash)
         {
-            if(numPiecesGarbage < maxPiecesGarbage)
+            //if(numPiecesGarbage < maxPiecesGarbage)
+            if (trash.smallTrash)
             {
                 numPiecesGarbage++;
                 Debug.Log("Added trash to bin");
+
+                UpdateFun(trash.throwTime * funFactor);
 
                 Destroy(other.gameObject);
 
                 if(numPiecesGarbage == maxPiecesGarbage)
                 {
-                    Finish();
+                    //Finish(); // Can use later if have time
                 }
             }
 

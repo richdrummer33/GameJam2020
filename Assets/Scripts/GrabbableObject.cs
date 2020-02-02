@@ -26,11 +26,13 @@ public class GrabbableObject : MonoBehaviour
         highlighter.SetActive(false);
     }
 
-    public virtual void OnThrow()
+    public virtual bool OnThrow(Vector3 throwVector)
     {
         Debug.Log("Threw " + name);
 
+        rb.AddForce(throwVector, ForceMode.Impulse);
         rb.drag = defaultDrag;
+        return true;
     }
 
     public virtual void OnGrab()

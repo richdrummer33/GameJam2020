@@ -33,6 +33,15 @@ public class DishesMinigame : Minigame
         currentSlot = 0;
     }
 
+    public override void ResetTask(BaseTask task)
+    {
+        base.ResetTask(task);
+
+        ResetGame();
+
+        isActive = true;
+    }
+
     public override void Interact()
     {
         if (isActive)

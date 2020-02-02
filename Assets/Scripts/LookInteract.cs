@@ -59,7 +59,7 @@ public class LookInteract : MonoBehaviour
             }
             else if (obj.GetComponent<Minigame>())
             {
-                Debug.Log("ASDSAD");
+                //Debug.Log("Minigame interaction");
                 selectedGame = obj.GetComponent<Minigame>();
                 selectedGame.Highlight();
                 
@@ -90,7 +90,7 @@ public class LookInteract : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f))
         {
             if ( hit.transform.CompareTag( "Grabbable" ) || hit.transform.CompareTag("Minigame"))
             {
@@ -123,11 +123,12 @@ public class LookInteract : MonoBehaviour
         {
             heldObject.transform.parent = null;
 
-            heldRb.AddForce(grabPosition.transform.forward * throwForce, ForceMode.Impulse);
-            heldObject.OnThrow();
-
-            heldRb = null;
-            heldObject = null;
+            Vector3 throwVector = grabPosition.transform.forward * throwForce;
+            if (heldObject.OnThrow(throwVector) || throwForce == 0f)
+            {
+                heldRb = null;
+                heldObject = null;
+            }
         }
     }
 }

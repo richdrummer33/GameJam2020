@@ -12,7 +12,27 @@ public class GarbageMinigame : Minigame
     List<GarbageBinController> binsToEmpty;
     int numtoDump;
     public int numDumped;
-    public bool destroyGarbage = true;
+
+    public float funFactor = 50f;
+
+    public override void ResetTask(BaseTask task)
+    {
+        base.ResetTask(task);
+
+        numDumped = 0;
+
+        foreach(GarbageBinController bin in binsToEmpty)
+        {
+            bin.isActive = true;
+        }
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        binsToEmpty = FindObjectsOfType<GarbageBinController>().ToList();
+        numtoDump = binsToEmpty.Count;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,10 +46,8 @@ public class GarbageMinigame : Minigame
                 Debug.Log("Bin accepts this bag");
                 numDumped++;
 
-                UpdateFun(garbageBag.throwTime * 50f);
+                UpdateFun(garbageBag.throwTime * funFactor);
 
-                if(destroyGarbage)
-                    Destroy(other.gameObject, 5f);
                 currentTaskCompletion = 1f - numDumped / numtoDump;
 
                 if (numDumped == numtoDump)
@@ -37,15 +55,11 @@ public class GarbageMinigame : Minigame
                     Finish();
                 }
             }
+
+            Destroy(other.gameObject, 2f);
         }
     }
 
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-        binsToEmpty = FindObjectsOfType<GarbageBinController>().ToList();
-        numtoDump = binsToEmpty.Count;
-    }
+
 
 }
