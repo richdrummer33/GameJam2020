@@ -11275,6 +11275,7 @@ GameObject:
   - component: {fileID: 1338009307804678}
   - component: {fileID: 350664513889871241}
   - component: {fileID: 8418961470982333346}
+  - component: {fileID: 8596419747028447911}
   m_Layer: 0
   m_Name: pl_roof_by_pieces_378_2_gable
   m_TagString: Untagged
@@ -11342,6 +11343,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8596419747028447911
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312773770144291814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 314145099624426649, guid: 5aab30cde8d502d47bef92472a14169e, type: 3}
 --- !u!1 &1313513491414107937
 GameObject:
   m_ObjectHideFlags: 0
@@ -21815,6 +21830,7 @@ GameObject:
   - component: {fileID: 8089718540828620874}
   - component: {fileID: 2224878344485727443}
   - component: {fileID: 1439409708586417759}
+  - component: {fileID: 4023752356111775842}
   m_Layer: 0
   m_Name: pl_roof_by_pieces_378_2_gable 1
   m_TagString: Untagged
@@ -21882,6 +21898,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4023752356111775842
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476895623434820291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 6254761268186437134, guid: 5aab30cde8d502d47bef92472a14169e, type: 3}
 --- !u!1 &2479704411577566677
 GameObject:
   m_ObjectHideFlags: 0
@@ -30504,6 +30534,7 @@ GameObject:
   - component: {fileID: 4108229471611627021}
   - component: {fileID: 1100336597269376417}
   - component: {fileID: 7480301249176244064}
+  - component: {fileID: 981059593764085533}
   m_Layer: 0
   m_Name: Level_1_OutsideBlock-01-00_W2
   m_TagString: Untagged
@@ -30571,6 +30602,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &981059593764085533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440573407634160174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.3000035, y: 0.15000004, z: 3.0000007}
+  m_Center: {x: -3.5000026, y: -0.07500097, z: 1.5000011}
 --- !u!1 &3449373309051417659
 GameObject:
   m_ObjectHideFlags: 0
@@ -30582,6 +30626,7 @@ GameObject:
   - component: {fileID: 4282582035092902519}
   - component: {fileID: 511234071583517452}
   - component: {fileID: 5826064887925605450}
+  - component: {fileID: 999598680}
   m_Layer: 0
   m_Name: pl_roof_by_pieces_377_0_field
   m_TagString: Untagged
@@ -30649,6 +30694,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &999598680
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449373309051417659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 3263191223523474431, guid: 5aab30cde8d502d47bef92472a14169e, type: 3}
 --- !u!1 &3451352829511476431
 GameObject:
   m_ObjectHideFlags: 0
@@ -37394,6 +37453,7 @@ GameObject:
   - component: {fileID: 5863308549538271874}
   - component: {fileID: 363529593798531634}
   - component: {fileID: 2874235914616777856}
+  - component: {fileID: 4588234380436426984}
   m_Layer: 0
   m_Name: Level_1_OutsideBlock-01-00_W1
   m_TagString: Untagged
@@ -37461,6 +37521,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4588234380436426984
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284639445675471735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.299999, y: 0.15000004, z: 3.0000007}
+  m_Center: {x: -4.5, y: -0.074999064, z: 1.5000008}
 --- !u!1 &4288956408266302870
 GameObject:
   m_ObjectHideFlags: 0
@@ -58287,6 +58360,7 @@ GameObject:
   - component: {fileID: 1565944163363321336}
   - component: {fileID: 1300062426796140511}
   - component: {fileID: 8206503448750649344}
+  - component: {fileID: 1890808998}
   m_Layer: 0
   m_Name: Level_1_OutsideBlock-01-00_W3
   m_TagString: Untagged
@@ -58354,6 +58428,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1890808998
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6786828458463071678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.299999, y: 0.15000004, z: 3.0000007}
+  m_Center: {x: -4.5, y: -0.075001925, z: 1.5000011}
 --- !u!1 &6802261562909668787
 GameObject:
   m_ObjectHideFlags: 0
@@ -70618,6 +70705,7 @@ GameObject:
   - component: {fileID: 4502338656561044687}
   - component: {fileID: 8700978429631042277}
   - component: {fileID: 3888076745977376860}
+  - component: {fileID: 8556382362373254061}
   m_Layer: 0
   m_Name: Level_1_OutsideBlock-01-00_W0
   m_TagString: Untagged
@@ -70685,6 +70773,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8556382362373254061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270898835189729092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.3000035, y: 0.15000004, z: 3.0000007}
+  m_Center: {x: -3.4999988, y: -0.07500002, z: 1.5000008}
 --- !u!1 &8282927047302492317
 GameObject:
   m_ObjectHideFlags: 0
