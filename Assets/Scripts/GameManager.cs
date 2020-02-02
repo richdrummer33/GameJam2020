@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,10 +38,28 @@ public class GameManager : MonoBehaviour
     {
         countdown = targetTime;
         taskList.CollectionChanged += TaskList_CollectionChanged;
-        todoDisplay.gameObject.SetActive(false);
         instance = this;
-        
+
+        OnStateChange += SwitchUI;
+
         ChangeState(gameState);
+    }
+
+    private void SwitchUI(GameState newState)
+    {
+        var uiActive = false;
+
+        switch (gameState)
+        {
+            case GameState.Playing:
+            case GameState.MaxedFun:
+                uiActive = true;
+                break;
+            default:
+                break;
+        }
+
+        todoDisplay.gameObject.SetActive(uiActive);
     }
 
     private void TaskList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -52,31 +71,39 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool gameStateActive = GameManager.instance.gameState == GameManager.GameState.Playing || GameManager.instance.gameState == GameManager.GameState.Lose;
+        switch (gameState)
+        {
+            case GameState.Playing:
+            case GameState.Lose:
+                if (!swamped)
+                {
+                    countdown -= Time.deltaTime;
+                    if (countdown <= 0f)
+                    {
+                        countdown = targetTime;
+                        CountDownFinished();
+                    }
+                }
+                break;
+            case GameState.Intro:
 
-        if (!swamped && gameStateActive)
-        {
-            countdown -= Time.deltaTime;
-            if (countdown <= 0f)
-            {
-                countdown = targetTime;
-                CountDownFinished();
-            }
-        }
-        else if(gameState == GameState.Intro)
-        {
-            introSceneCountdown -= Time.deltaTime;
-            if(introSceneCountdown <= 0f)
-            {
-                ChangeState(GameState.Dream);
-            }
-        }
-        else if (gameState == GameState.MaxedFun)
-        {
-            if(taskList.Count == 0)
-            {
-                Win();
-            }
+                introSceneCountdown -= Time.deltaTime;
+                if (introSceneCountdown <= 0f)
+                {
+                    ChangeState(GameState.Dream);
+                }
+
+                break;
+            case GameState.MaxedFun:
+
+                if (taskList.Count == 0)
+                {
+                    Win();
+                }
+
+                break;
+            default:
+                break;
         }
     }
 
@@ -112,11 +139,6 @@ public class GameManager : MonoBehaviour
             gameState = newState;
             Debug.Log("Game State changed to " + newState.ToString());
 
-            if (newState == GameState.Playing)
-            {
-                todoDisplay.gameObject.SetActive(true);
-            }
-
             OnStateChange(newState); // Trigger any pertinent cutscenes
         }
     }
@@ -130,14 +152,12 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         Debug.Log("You're now fun, game won");
-        ChangeState(GameState.Win);
-        todoDisplay.gameObject.SetActive(false); // Ideally, the UI fades* out and player drops the task list on the ground 
+        ChangeState(GameState.Win); // Ideally, the UI fades* out and player drops the task list on the ground 
     }
 
     public void Lose()
     {
         Debug.Log("You've forgot what fun is, game lost");
         ChangeState(GameState.Lose);
-        todoDisplay.gameObject.SetActive(false);
     }
 }
