@@ -50,9 +50,9 @@ public class FunManager : MonoBehaviour
                 return;
             }
 
-            if (Amount >= 99)
+            if (Amount >= 100)
             {
-                GameManager.instance.MaxedFun();
+                GameManager.instance.Win();
                 return;
             }
         }
