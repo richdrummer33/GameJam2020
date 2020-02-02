@@ -36,7 +36,7 @@ public class TrampBehaviour : Minigame
     }
 
 
-    void Start()
+    protected override void Start()
     {
 
 
