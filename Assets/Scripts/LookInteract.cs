@@ -90,7 +90,7 @@ public class LookInteract : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f))
         {
             if ( hit.transform.CompareTag( "Grabbable" ) || hit.transform.CompareTag("Minigame"))
             {

@@ -16,8 +16,12 @@ public class GrabbableGarbage : GrabbableObject
 
     private void OnCollisionEnter(Collision collision)
     {
-        throwTime = 0f;
-        isThrown = false;
+        if (collision.transform.tag != "IgnoreCollision")
+        {
+            print("This garbage collided with " + collision.transform.name + " with tag " + collision.transform.tag);
+            throwTime = 0f;
+            isThrown = false;
+        }
     }
 
     void Update()

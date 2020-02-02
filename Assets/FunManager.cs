@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FunManager : MonoBehaviour
 {
+    public static FunManager instance;
+
     private float amount = 50;
     public float decaySpeed = 0.07f;
     public FunMeter funMeter;
@@ -33,7 +35,7 @@ public class FunManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this;
     }
 
     // Update is called once per frame
