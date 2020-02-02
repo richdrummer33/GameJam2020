@@ -62,6 +62,9 @@ public class FunManager : MonoBehaviour
 
     public void ChangeFun(float changeAmount)
     {
-        funMeter.UpdateValue(Amount += changeAmount);
+        if (GameManager.instance.gameState == GameManager.GameState.Playing)
+        {
+            funMeter.UpdateValue(Amount += changeAmount);
+        }
     }
 }
