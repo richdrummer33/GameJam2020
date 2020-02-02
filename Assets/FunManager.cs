@@ -11,7 +11,6 @@ public class FunManager : MonoBehaviour
     public float decaySpeed = 0.07f;
     public FunMeter funMeter;
 
-    public bool gameOver = false;
 
     public float Amount
     {
@@ -41,35 +40,25 @@ public class FunManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameOver)
+        if (!GameManager.instance.gameOver && GameManager.instance.gameState == GameManager.GameState.Playing)
         {
             ChangeFun(-decaySpeed);
 
             if (Amount <= 0)
             {
-                Lose();
+                GameManager.instance.Lose();
                 return;
             }
 
             if (Amount >= 100)
             {
-                Win();
+                GameManager.instance.Win();
                 return;
             }
         }
     }
 
-    private void Win()
-    {
-        gameOver = true;
-        Debug.Log("You're now fun, game won");
-    }
 
-    private void Lose()
-    {
-        gameOver = true;
-        Debug.Log("You've forgot what fun is, game lost");
-    }
 
     public void ChangeFun(float changeAmount)
     {

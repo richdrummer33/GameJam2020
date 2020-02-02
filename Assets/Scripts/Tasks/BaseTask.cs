@@ -19,17 +19,27 @@ public class BaseTask : MonoBehaviour
         assignedMinigame.associatedTask = this;
         name = assignedMinigame.taskName;
         taskList.Add(this);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //GameManager.instance.TaskCreated(this);
     }
 
     public void Complete()
     {
+        string completedTaskName = this.assignedMinigame.taskName;
+
+        foreach (BaseTask task in taskList)
+        {
+            if (task.assignedMinigame.taskName == completedTaskName)
+            {
+                task.assignedMinigame.ResetTask(task);
+            }
+        }
+
         taskList.Remove(this);
         Destroy(gameObject);
+    }
+
+    public void OnRemove() //RB added to account for multiple same task on list
+    {
+
     }
 }

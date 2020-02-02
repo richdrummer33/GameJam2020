@@ -5,13 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class RigidbodyFPSController : MonoBehaviour
 {
-    
+    public static RigidbodyFPSController instance;
+
     public float speed = 10.0f;
     public float gravity = 10.0f;
     public float maxVelocityChange = 10.0f;
     public bool canJump = true;
     public float jumpHeight = 2.0f;
     public bool grounded = true;
+    public bool canMove = true;
 
     Rigidbody myRigidbody;
 
@@ -20,12 +22,12 @@ public class RigidbodyFPSController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody>();
         myRigidbody.freezeRotation = true;
         myRigidbody.useGravity = false;
+        instance = this;
     }
 
     void FixedUpdate()
     {
-        grounded = true; // forcing grounded=true to allow trampoline testing with movement in air
-        if (grounded)
+        if (canMove)
         {
             Vector3 fwdVel = Camera.main.transform.forward.normalized;
             fwdVel.y = 0f;
@@ -86,7 +88,8 @@ public class RigidbodyFPSController : MonoBehaviour
 
     void OnCollisionStay()
     {
-        grounded = true;
+        if(tag != "IgnoreCollision")
+            grounded = true;
     }
 
     float CalculateJumpVerticalSpeed()
@@ -95,4 +98,12 @@ public class RigidbodyFPSController : MonoBehaviour
         // for the character to reach at the apex.
         return Mathf.Sqrt(2 * jumpHeight * gravity);
     }
+
+    public void Teleport(Transform pos)
+    {
+        transform.position = pos.position;
+    }
+
+
+
 }

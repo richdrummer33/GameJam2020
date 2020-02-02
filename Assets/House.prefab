@@ -15032,6 +15032,7 @@ GameObject:
   - component: {fileID: 7453734296433775503}
   - component: {fileID: 7463435395586257776}
   - component: {fileID: 1530249298922119532}
+  - component: {fileID: 1853125496}
   m_Layer: 0
   m_Name: bed_08_135x190_bedspread
   m_TagString: Untagged
@@ -15099,6 +15100,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1853125496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851481208045834942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 128.86383, y: 151.00984, z: 60.782166}
+  m_Center: {x: -0.000061035156, y: -0.00023651126, z: 0.000098228455}
 --- !u!1 &1856351598647766934
 GameObject:
   m_ObjectHideFlags: 0
@@ -27609,6 +27623,7 @@ GameObject:
   - component: {fileID: 7063050131698687179}
   - component: {fileID: 3835374149197708539}
   - component: {fileID: 3399162632735111307}
+  - component: {fileID: 1541686284}
   m_Layer: 0
   m_Name: pl_roof_by_pieces_378_1_field
   m_TagString: Untagged
@@ -27676,6 +27691,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1541686284
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200037456168110271}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 1490914021212770717, guid: 5aab30cde8d502d47bef92472a14169e, type: 3}
 --- !u!1 &3209480556521839878
 GameObject:
   m_ObjectHideFlags: 0
@@ -31328,6 +31357,7 @@ GameObject:
   - component: {fileID: 2380354503767919043}
   - component: {fileID: 1198006675869227999}
   - component: {fileID: 6404031880114599652}
+  - component: {fileID: 1974394163}
   m_Layer: 0
   m_Name: pl_roof_by_pieces_378_0_field
   m_TagString: Untagged
@@ -31395,6 +31425,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1974394163
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674004446561951747}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -1790083633031596453, guid: 5aab30cde8d502d47bef92472a14169e, type: 3}
 --- !u!1 &3681167996765608037
 GameObject:
   m_ObjectHideFlags: 0
@@ -43325,6 +43369,7 @@ GameObject:
   - component: {fileID: 291897216476746408}
   - component: {fileID: 4920117957228849887}
   - component: {fileID: 4184990923441000851}
+  - component: {fileID: 1749320353}
   m_Layer: 0
   m_Name: Level_1_DownToBlock-00-00_Floor
   m_TagString: Untagged
@@ -43392,6 +43437,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1749320353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120541511362388151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3295965, y: 4.764001, z: 0.25000006}
+  m_Center: {x: -3.2032018, y: 2.3820014, z: 0.1250005}
 --- !u!1 &5131909060858071757
 GameObject:
   m_ObjectHideFlags: 0
@@ -44167,6 +44225,7 @@ GameObject:
   - component: {fileID: 3709864206688196234}
   - component: {fileID: 4973920628033028682}
   - component: {fileID: 1227455020484657922}
+  - component: {fileID: 1930073721}
   m_Layer: 0
   m_Name: Level_1_Corridor_Floor
   m_TagString: Untagged
@@ -44234,6 +44293,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1930073721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226863980062992283}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.124, y: 7.000002, z: 0.25000006}
+  m_Center: {x: -2.062, y: 3.500002, z: 0.12500075}
 --- !u!1 &5240728341034230977
 GameObject:
   m_ObjectHideFlags: 0

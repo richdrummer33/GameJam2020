@@ -18,9 +18,10 @@ public class GarbageBinController : Minigame
     {
         base.Interact();
 
-        if (isActive && numPiecesGarbage == maxPiecesGarbage)
+        if (isActive) //&& numPiecesGarbage == maxPiecesGarbage)
         {
-            numPiecesGarbage = 0;
+            //numPiecesGarbage = 0;
+
             GameObject newBag = Instantiate(garbageBagPrefab, transform.position, garbageBagPrefab.transform.rotation, null);
 
             newBag.GetComponent<GrabbableGarbage>().binOfOrigin = this;
@@ -48,7 +49,7 @@ public class GarbageBinController : Minigame
 
                 if(numPiecesGarbage == maxPiecesGarbage)
                 {
-                    Finish();
+                    //Finish(); // Can use later if have time
                 }
             }
 

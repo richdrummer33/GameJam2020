@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1430693970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430693971}
+  - component: {fileID: 1430693974}
+  - component: {fileID: 1430693973}
+  - component: {fileID: 1430693972}
+  m_Layer: 0
+  m_Name: Quad
+  m_TagString: IgnoreCollision
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1430693971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430693970}
+  m_LocalRotation: {x: 0.20200267, y: -0, z: -0, w: 0.979385}
+  m_LocalPosition: {x: 6.9, y: 94.5, z: -36.7}
+  m_LocalScale: {x: 120.594086, y: 60.884964, z: 10}
+  m_Children: []
+  m_Father: {fileID: 2510955063410344246}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 23.308, y: 0, z: 0}
+--- !u!33 &1430693974
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430693970}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1430693973
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430693970}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &1430693972
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430693970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &597566031260036645
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +106,7 @@ GameObject:
   - component: {fileID: 4134245670527279758}
   m_Layer: 0
   m_Name: Box06
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +184,7 @@ GameObject:
   - component: {fileID: 196333773068689867}
   m_Layer: 0
   m_Name: Cylinder13
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +260,7 @@ GameObject:
   - component: {fileID: 2510955063410344246}
   m_Layer: 0
   m_Name: Garbage Minigame
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,6 +284,7 @@ Transform:
   - {fileID: 6958802880936714448}
   - {fileID: 5173524378355373586}
   - {fileID: 1171102281233870913}
+  - {fileID: 1430693971}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -75, z: 0}
@@ -207,7 +301,7 @@ GameObject:
   - component: {fileID: 5247515176888744907}
   m_Layer: 0
   m_Name: Cylinder14
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,10 +377,9 @@ GameObject:
   - component: {fileID: 1171102281233870913}
   - component: {fileID: 2776168263993158505}
   - component: {fileID: 4892662975985578615}
-  - component: {fileID: 7467531806847494691}
   m_Layer: 0
   m_Name: Object01
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,13 +391,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988599010833185320}
-  m_LocalRotation: {x: -0.5445698, y: 0.009542673, z: -0.017389296, w: 0.83848095}
+  m_LocalRotation: {x: -0.5448426, y: -0.013690144, z: -0.002295971, w: 0.8384235}
   m_LocalPosition: {x: 2.9163024, y: 66.12066, z: 13.4249}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2510955063410344246}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: -65.908005, y: 4.9110003, z: -5.5610003}
+  m_LocalEulerAnglesHint: {x: -66.019005, y: -2.8850002, z: 1.5600001}
 --- !u!33 &2776168263993158505
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -351,20 +444,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7467531806847494691
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988599010833185320}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4099932157646263679, guid: c53128388ebd1fc4e94b00921ddfa608, type: 3}
 --- !u!1 &2568704833297189395
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +457,7 @@ GameObject:
   - component: {fileID: 1940033353825788898}
   m_Layer: 0
   m_Name: Box08
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +542,7 @@ GameObject:
   - component: {fileID: 5496755990251678203}
   m_Layer: 0
   m_Name: Garbage Minigame
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539,8 +618,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 115.8918, y: 76.1882, z: 7.584083}
-  m_Center: {x: 4.1801248, y: 28.781, z: -46.436947}
+  m_Size: {x: 115.89181, y: 76.18821, z: 6.934024}
+  m_Center: {x: 4.180121, y: 28.780996, z: -55.062252}
 --- !u!65 &7467531806847494689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -591,8 +670,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 101.98464, y: 70.3863, z: 61.369164}
-  m_Center: {x: 4.1798954, y: 25.880056, z: -11.202002}
+  m_Size: {x: 101.98465, y: 70.38629, z: 69.9881}
+  m_Center: {x: 4.179895, y: 25.88005, z: -15.511441}
 --- !u!114 &7467531806847494693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskDuration: 0
   isActive: 0
+  funManager: {fileID: 0}
   associatedTask: {fileID: 0}
   taskName: Take out all the garbage
   highlighter: {fileID: 0}
@@ -615,6 +695,7 @@ MonoBehaviour:
   binsToEmpty: []
   numDumped: 0
   destroyGarbage: 1
+  funFactor: 75
 --- !u!65 &5496755990251678203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -641,7 +722,7 @@ GameObject:
   - component: {fileID: 4609555909643193471}
   m_Layer: 0
   m_Name: Box07
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,7 +800,7 @@ GameObject:
   - component: {fileID: 8972441426170577406}
   m_Layer: 0
   m_Name: Box05
-  m_TagString: Untagged
+  m_TagString: IgnoreCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

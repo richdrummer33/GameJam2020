@@ -64,4 +64,11 @@ public abstract class Minigame : MonoBehaviour
         Debug.Log("Added " + value + " fun");
         funManager.ChangeFun(value);
     }
+
+    public virtual void ResetTask(BaseTask task)
+    {
+        Debug.Log("Resetting " + name);
+
+        associatedTask = task; // Next task on list
+    }
 }
