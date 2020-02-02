@@ -11,7 +11,7 @@ public class RigidbodyFPSController : MonoBehaviour
     public float maxVelocityChange = 10.0f;
     public bool canJump = true;
     public float jumpHeight = 2.0f;
-    private bool grounded = false;
+    public bool grounded = true;
 
     Rigidbody myRigidbody;
 
@@ -24,6 +24,7 @@ public class RigidbodyFPSController : MonoBehaviour
 
     void FixedUpdate()
     {
+        grounded = true; // forcing grounded=true to allow trampoline testing with movement in air
         if (grounded)
         {
             Vector3 fwdVel = Camera.main.transform.forward.normalized;

@@ -4,32 +4,40 @@ using UnityEngine;
 
 public class TrampBehaviour : MonoBehaviour
 {
-    public GameObject playcontroller;
-    private bool triggered;
-    public float bounceforce = 1.0f;
+    public GameObject bouncingobject;
+    public Transform bouncingtransform;
+    public bool triggered;
+    public float bounceforce = 2;
+    public Rigidbody rb;
+    // public Rigidbody rb;
+
     // Start is called before the first frame update
 
     private void OnTriggerEnter(Collider other)
     {
         triggered = true;
-        playcontroller = other.GameObject;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        triggered = false;
-    }
-    void Start()
-    {
-        triggered = false;
-      
+        // Rigidbody rb = other.GetComponent<Rigidbody>();
+        bouncingtransform = other.GetComponent<Transform>();
+        bouncingobject = other.gameObject;
+        
     }
 
-    // Update is called once per frame
+
+    void Start()
+    {
+       
+
+    }
+
+    
     void Update()
     {
-        if(triggered)
+        if (triggered)
         {
-            playcontroller.AddForce(transform.up * bounceforce);
+            bouncingobject.GetComponent<Rigidbody>().AddForce(bouncingtransform.up * bounceforce, ForceMode.Impulse);
+            triggered = false;
+
         }
     }
 }
+
