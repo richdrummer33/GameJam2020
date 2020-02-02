@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public delegate void CreateTaskEvent(string taskName);
     public static CreateTaskEvent OnCreateTask;
 
+    public delegate void TaskCompletedEvent(bool highlightOthers);
+    public static TaskCompletedEvent OnTaskComplete;
+
     public ToDoList todoDisplay;
 
     public bool gamePaused;
@@ -116,6 +119,11 @@ public class GameManager : MonoBehaviour
     {
         var newTask = Instantiate(taskPrefab, gameObject.transform);
         newTask.taskList = taskList;
+    }
+
+    public void TaskCompleted(string taskName)
+    {
+        OnTaskComplete(true);
     }
 
     void CheckSwampedWithTasks()
