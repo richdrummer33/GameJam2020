@@ -6,6 +6,9 @@ public class GameStartController : Minigame
 {
     public GameObject constantHighlight;
     public GameObject text;
+    Vector3 defaultLocation;
+    Vector3 defaultScale;
+    bool hasStarted;
 
     protected override void Start()
     {
@@ -16,7 +19,20 @@ public class GameStartController : Minigame
         constantHighlight.SetActive(false);
         text.SetActive(false);
 
+        if (!hasStarted)
+        {
+            defaultLocation = transform.position;
+            defaultScale = transform.localScale;
+            hasStarted = true;
+        }
+
         GameManager.OnStateChange += SetVisible;
+    }
+    
+    public void ResetThisCard()
+    {
+        transform.position = defaultLocation;
+        transform.localScale = defaultScale;
     }
 
     public void SetVisible(GameManager.GameState state)

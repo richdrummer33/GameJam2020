@@ -16,7 +16,7 @@ public class Cutscene : MonoBehaviour
     public bool stayfaded = false;
     public Color targetFadeColor = Color.black;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.OnStateChange += CheckStateOnChange;
     }

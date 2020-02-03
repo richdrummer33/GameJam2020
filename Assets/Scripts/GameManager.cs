@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public float introSceneCountdown = 10f;
     [SerializeField]
-    float countdown;
+    float countdown = Mathf.Infinity;
     public float targetTime = 60.0f;
 
     public ObservableCollection<BaseTask> taskList = new ObservableCollection<BaseTask>();
@@ -88,15 +87,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
                 break;
-            case GameState.Intro:
-
-                introSceneCountdown -= Time.deltaTime;
-                if (introSceneCountdown <= 0f)
-                {
-                    ChangeState(GameState.Dream);
-                }
-
-                break;
+            
             default:
                 break;
         }
@@ -131,7 +122,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("You were swamped with tasks for the day, but the next day comes");
         swamped = true;
         //taskList = new ObservableCollection<BaseTask>();
-        ChangeState(GameState.Start);
+        ChangeState(GameState.Dream);
     }
 
     public void ChangeState(GameState newState)

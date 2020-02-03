@@ -161,9 +161,11 @@ MonoBehaviour:
   associatedTask: {fileID: 0}
   taskName: 
   highlighter: {fileID: 0}
+  highlightOnLook: 1
+  loopingSound: 0
   minigameType: 1
   currentTaskCompletion: 0
-  funFactor: 3
+  funFactor: 1
 --- !u!1 &5302671919253315498
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ public class FunManager : MonoBehaviour
                 return;
             }
 
-            if (Amount >= 100)
+            if (Amount >= 99)
             {
                 GameManager.instance.Win();
                 return;

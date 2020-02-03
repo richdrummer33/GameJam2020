@@ -25,6 +25,13 @@ public class ComputerMinigame : Minigame
 
     private void ResetGame()
     {
+        StartCoroutine(DelayedRestart());
+    }
+
+    IEnumerator DelayedRestart()
+    {
+        yield return new WaitForSeconds( 2f);
+
         currentTaskCompletion = 0f;
     }
 
