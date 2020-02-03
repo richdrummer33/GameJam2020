@@ -11,7 +11,6 @@ public class FunManager : MonoBehaviour
     public float decaySpeed = 0.07f;
     public FunMeter funMeter;
 
-
     public float Amount
     {
         get => amount; set
@@ -37,6 +36,11 @@ public class FunManager : MonoBehaviour
         instance = this;
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnStateChange += ResetOnGameStart;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -58,7 +62,13 @@ public class FunManager : MonoBehaviour
         }
     }
 
-
+    void ResetOnGameStart(GameManager.GameState newState)
+    {
+        if(newState == GameManager.GameState.Playing)
+        {
+            amount = 50;
+        }
+    }
 
     public void ChangeFun(float changeAmount)
     {

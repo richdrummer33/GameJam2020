@@ -19,8 +19,13 @@ public class BaseTask : MonoBehaviour
         assignedMinigame.associatedTask = this;
         name = assignedMinigame.taskName;
         taskList.Add(this);
-        GameManager.OnTaskComplete += OnOtherTaskComplete;
         //GameManager.instance.TaskCreated(this);
+    }
+
+    private void Awake()
+    {
+        GameManager.OnTaskComplete += OnOtherTaskComplete;
+        GameManager.OnStateChange += ClearFromList;
     }
 
     public void Complete()
@@ -40,7 +45,17 @@ public class BaseTask : MonoBehaviour
 
         GameManager.instance.TaskCompleted(assignedMinigame.taskName);
         taskList.Remove(this);
-        Destroy(gameObject);
+        if(gameObject)
+            Destroy(gameObject);
+    }
+
+    public void ClearFromList(GameManager.GameState newState) // I.e. when start new day
+    {
+        if (newState == GameManager.GameState.Start)
+        {
+            taskList.Remove(this);
+            Destroy(gameObject);
+        }
     }
 
     public void OnOtherTaskComplete(string name)
@@ -49,5 +64,10 @@ public class BaseTask : MonoBehaviour
         {
             assignedMinigame.TempHighlight();
         }
+    }
+    private void OnDisable()
+    {
+        GameManager.OnTaskComplete -= OnOtherTaskComplete;
+        GameManager.OnStateChange -= ClearFromList;
     }
 }

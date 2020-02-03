@@ -7,6 +7,8 @@ TagManager:
   - Grabbable
   - Minigame
   - IgnoreCollision
+  - GrabbableGarbage
+  - GrabbableEnvelope
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,8 @@ public class DishesMinigame : Minigame
     protected float lastClickTime; // use Time.time to get delta from this current click
     public float minClickRate = 1f; // Clicks per second to start progress
 
+    float audioDelayTimer;
+
     public override void Activate()
     {
         base.Activate();
@@ -66,13 +68,15 @@ public class DishesMinigame : Minigame
                     animator.Animate();
                     currentSlot++;
 
-                    //if (!source.isPlaying)
-                        //PlaySound();
-
                     if (spawnedDishes.Count >= dishRackslots.Count)
                     {
                         Finish(); // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
                     }
+
+                    if (!source.isPlaying)
+                        source.Play();
+
+                    audioDelayTimer = 1f / minClickRate;
                 }
             }
 
@@ -84,6 +88,15 @@ public class DishesMinigame : Minigame
         }
     }
 
+    private void Update()
+    {
+        audioDelayTimer -= Time.deltaTime;
+
+        if (audioDelayTimer < 0f && source.isPlaying)
+        {
+            source.Stop();
+        }
+    }
 
     // Start is called before the first frame update
     protected override void Start()

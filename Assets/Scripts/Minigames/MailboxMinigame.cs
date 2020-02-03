@@ -8,7 +8,14 @@ public class MailboxMinigame : Minigame
     GameObject currentLetter;
     public float funFactor;
     bool interacted = false;
+    
+     LetterDestinationController table; // Should be generic!!!
 
+    protected override void Start()
+    {
+        table = FindObjectOfType<LetterDestinationController>();
+        UnHighlight();
+    }
     public override void Interact()
     {
         base.Interact();
@@ -22,12 +29,14 @@ public class MailboxMinigame : Minigame
             interacted = true;
             isActive = false;
 
+            table.Highlight(true);
             LookInteract.instance.selectedObject = currentLetter.GetComponent<GrabbableGarbage>();
             LookInteract.instance.AttemptGrab();
             UnHighlight();
         }
     }
 
+    /*
     private void Update()
     {
         if(!currentLetter && interacted)
@@ -36,6 +45,7 @@ public class MailboxMinigame : Minigame
             Finish();
         }
     }
+    */
 
     public override void ResetTask(BaseTask task)
     {

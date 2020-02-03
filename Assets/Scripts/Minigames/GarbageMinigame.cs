@@ -10,10 +10,14 @@ public class GarbageMinigame : Minigame
 {
     [SerializeField]
     List<GarbageBinController> binsToEmpty;
+    List<GarbageBinController> activeBinsToEmpty; // Still need emptying
     int numtoDump;
     public int numDumped;
+    public bool destroyOnCollision = true;
 
     public float funFactor = 50f;
+
+    public string tagToCheck = "GrabbableGarbage";
 
     public override void ResetTask(BaseTask task)
     {
@@ -26,6 +30,8 @@ public class GarbageMinigame : Minigame
             bin.isActive = true;
             bin.TempHighlight();
         }
+
+        activeBinsToEmpty = binsToEmpty;
     }
 
     protected override void Start()
@@ -33,13 +39,14 @@ public class GarbageMinigame : Minigame
         base.Start();
         binsToEmpty = FindObjectsOfType<GarbageBinController>().ToList();
         numtoDump = binsToEmpty.Count;
+        activeBinsToEmpty = binsToEmpty;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         GrabbableGarbage garbageBag = other.GetComponent<GrabbableGarbage>();
 
-        if (garbageBag)
+        if (garbageBag && other.tag == tagToCheck)
         {
             Debug.Log("Bin felt this bag");
             if (binsToEmpty.Contains(garbageBag.binOfOrigin))
@@ -57,7 +64,16 @@ public class GarbageMinigame : Minigame
                 }
             }
 
-            Destroy(other.gameObject, 2f);
+            if(destroyOnCollision)
+                Destroy(other.gameObject, 2f);
+
+            UnHighlight();
+
+            activeBinsToEmpty.Remove(garbageBag.binOfOrigin);
+            foreach(GarbageBinController bin in activeBinsToEmpty)
+            {
+                bin.TempHighlight();
+            }
         }
     }
 

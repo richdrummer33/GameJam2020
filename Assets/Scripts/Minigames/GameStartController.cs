@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameStartController : Minigame
 {
-    public GameObject constantHighlight;
-    public GameObject text;
     Vector3 defaultLocation;
     Vector3 defaultScale;
     bool hasStarted;
@@ -16,8 +14,7 @@ public class GameStartController : Minigame
 
         minigameType = MinigameType.Fun; // Not a task
         isActive = false;
-        constantHighlight.SetActive(false);
-        text.SetActive(false);
+        //text.SetActive(false);
 
         if (!hasStarted)
         {
@@ -40,8 +37,6 @@ public class GameStartController : Minigame
         if (state == GameManager.GameState.Start)
         {
             isActive = true;
-            constantHighlight.SetActive(true);
-            text.SetActive(true);
         }
     }
 
@@ -62,8 +57,8 @@ public class GameStartController : Minigame
         RigidbodyFPSController.instance.canMove = false;
         MouseLook.Instance.cursorLock = true;
 
-        iTween.MoveTo(gameObject, RigidbodyFPSController.instance.transform.position, 3f);
-        iTween.ScaleBy(gameObject, Vector3.one * 0.25f, 3f);
+        iTween.MoveTo(gameObject, RigidbodyFPSController.instance.transform.position, 2f);
+        iTween.ScaleBy(gameObject, Vector3.one * 0.25f, 2f);
 
         yield return new WaitForSeconds(3f);
 

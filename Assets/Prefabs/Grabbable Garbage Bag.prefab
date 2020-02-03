@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2579931798222697404}
   m_Layer: 0
   m_Name: Grabbable Garbage Bag
-  m_TagString: Grabbable
+  m_TagString: GrabbableGarbage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighter: {fileID: 5831087686539804417}
+  grabDrag: 5
   throwTime: 0
+  binOfOrigin: {fileID: 0}
+  smallTrash: 0
 --- !u!1001 &2579931798265177608
 PrefabInstance:
   m_ObjectHideFlags: 0

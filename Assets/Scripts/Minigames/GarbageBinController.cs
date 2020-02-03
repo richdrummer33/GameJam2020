@@ -36,7 +36,7 @@ public class GarbageBinController : Minigame
 
             newBag.GetComponent<GrabbableGarbage>().binOfOrigin = this;
 
-            bigTrashMinigame.TempHighlight(); // Temporary for player to know where to go
+            bigTrashMinigame.Highlight(true); // Temporary for player to know where to go
 
             isActive = false;
 

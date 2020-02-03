@@ -92,7 +92,7 @@ public class LookInteract : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f))
         {
-            if ( hit.transform.CompareTag( "Grabbable" ) || hit.transform.CompareTag("Minigame"))
+            if ( hit.transform.tag.Contains( "Grabbable" ) || hit.transform.CompareTag("Minigame"))
             {
                 return hit.transform.gameObject;
             }
@@ -117,13 +117,14 @@ public class LookInteract : MonoBehaviour
         }
     }
 
-    void AttemptRelease(float throwForce)
+    public void AttemptRelease(float throwForce)
     {
         if (heldObject)
         {
             heldObject.transform.parent = null;
 
             Vector3 throwVector = grabPosition.transform.forward * throwForce;
+
             if (heldObject.OnThrow(throwVector) || throwForce == 0f)
             {
                 heldRb = null;

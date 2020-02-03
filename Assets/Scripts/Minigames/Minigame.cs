@@ -40,7 +40,7 @@ public abstract class Minigame : MonoBehaviour
         if(source == null)
             gameObject.AddComponent<AudioSource>();
 
-        //source = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
         //defaultVolume = source.volume;
         //GameManager.OnTaskComplete += TempHighlight;
     }

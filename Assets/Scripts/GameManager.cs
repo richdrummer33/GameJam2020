@@ -35,16 +35,23 @@ public class GameManager : MonoBehaviour
     public bool gamePaused;
     bool swamped = false;
 
+    public GameObject GameStarterPostItNotePrefab;
+    public Transform gameStarterSpawnPosition;
+    GrabbableObject[] grabbableObjects;
+
     // Start is called before the first frame update
     void Start()
     {
         countdown = targetTime;
-        taskList.CollectionChanged += TaskList_CollectionChanged;
         instance = this;
-
-        OnStateChange += SwitchUI;
-
+        grabbableObjects = FindObjectsOfType<GrabbableObject>();
         ChangeState(gameState);
+    }
+
+    private void Awake()
+    {
+        taskList.CollectionChanged += TaskList_CollectionChanged; // THESE USED TO BE IN START
+        OnStateChange += SwitchUI;
     }
 
     private void SwitchUI(GameState newState)
@@ -133,6 +140,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game State changed to " + newState.ToString());
 
             OnStateChange(newState); // Trigger any pertinent cutscenes
+
+            if(newState == GameState.Start)
+            {
+                LookInteract.instance.AttemptRelease(0f);
+                Instantiate(GameStarterPostItNotePrefab, gameStarterSpawnPosition.position, gameStarterSpawnPosition.rotation);
+            }
+            else if(newState == GameState.Playing)
+            {
+                swamped = false;
+            }
         }
     }
 
@@ -151,6 +168,7 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         Debug.Log("You've forgot what fun is, game lost");
-        ChangeState(GameState.Lose);
+        //ChangeState(GameState.Lose);
+        ChangeState(GameState.Dream);
     }
 }

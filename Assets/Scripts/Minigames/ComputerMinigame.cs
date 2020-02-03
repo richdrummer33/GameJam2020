@@ -17,6 +17,8 @@ public class ComputerMinigame : Minigame
     public Renderer crtDisplay;
     Material displayMat;
 
+    float audioDelayTimer;
+
     public override void Activate()
     {
         base.Activate();
@@ -30,9 +32,11 @@ public class ComputerMinigame : Minigame
 
     IEnumerator DelayedRestart()
     {
+        isActive = false;
         yield return new WaitForSeconds( 2f);
 
         currentTaskCompletion = 0f;
+        isActive = true;
     }
 
     public override void ResetTask(BaseTask task)
@@ -65,12 +69,26 @@ public class ComputerMinigame : Minigame
                 {
                     Finish(); // TASK IS COMPLETE! Tell Game Manager (or task manager?) that it's done
                 }
+
+                if (!source.isPlaying)
+                    source.Play();
+
+                audioDelayTimer = 1f / minClickRate;
             }
 
             lastClickTime = Time.time;
         }
     }
 
+    private void Update()
+    {
+        audioDelayTimer -= Time.deltaTime;
+
+        if(audioDelayTimer < 0f && source.isPlaying)
+        {
+            source.Stop();
+        }
+    }
 
     // Start is called before the first frame update
     protected override void Start()

@@ -10,6 +10,8 @@ public class GrabbableDartGun : GrabbableObject
 
     public override bool OnThrow(Vector3 throwVector)
     {
+        base.OnThrow(-transform.forward * 0.66f);
+
         GameObject dart = Instantiate(dartPrefab, muzzle.position, muzzle.rotation);
 
         dart.GetComponent<Rigidbody>().AddForce(muzzle.forward * fireForce, ForceMode.Impulse);

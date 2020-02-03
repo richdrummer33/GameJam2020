@@ -16,6 +16,9 @@ public class Cutscene : MonoBehaviour
     public bool stayfaded = false;
     public Color targetFadeColor = Color.black;
 
+    public List<AudioClip> clips = new List<AudioClip>();
+    int clipIndex;
+
     private void Awake()
     {
         GameManager.OnStateChange += CheckStateOnChange;
@@ -27,13 +30,16 @@ public class Cutscene : MonoBehaviour
             StartCutscene();
     }
 
-    public void StartCutscene()
+    void StartCutscene()
     {
         StartCoroutine(Transition(fadeDuration));
     }
 
     IEnumerator Transition(float fadeDuration)
     {
+        if (clips.Count > 0)
+            GetComponent<AudioSource>().clip = clips[clipIndex];
+                
         if (visionBlocker) // Fade to black
         {
             float t = 0f;
@@ -81,6 +87,9 @@ public class Cutscene : MonoBehaviour
                 yield return null;
             }
         }
+
+        if (clipIndex < clips.Count - 1)
+            clipIndex++;
 
         RigidbodyFPSController.instance.canMove = true;
     }

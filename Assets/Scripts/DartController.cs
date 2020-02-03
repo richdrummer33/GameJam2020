@@ -16,21 +16,30 @@ public class DartController : Minigame
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (Random.Range(0f, 1f) > 0.75f)
+        if (collision.transform.tag != "Player" && rb)
         {
-            transform.parent = collision.transform;
-            rb.isKinematic = true;
-            Destroy(gameObject, 15f);
-        }
-
-        Rigidbody otherRb = collision.gameObject.GetComponent<Rigidbody>();
-
-        if (otherRb)
-        {
-            if (!otherRb.isKinematic)
+            if (Random.Range(0f, 1f) > 0.75f)
             {
-                FunManager.instance.ChangeFun(funFactor);
+                transform.parent = collision.transform;
+                rb.isKinematic = true;
+            }
+
+            Rigidbody otherRb = collision.gameObject.GetComponent<Rigidbody>();
+
+            if (otherRb)
+            {
+                if (!otherRb.isKinematic)
+                {
+                    FunManager.instance.ChangeFun(funFactor);
+                }
+            }
+            else
+            {
+                FunManager.instance.ChangeFun(funFactor / 2f);
             }
         }
+
+        Destroy(rb);
+        Destroy(gameObject, 15f);
     }
 }
